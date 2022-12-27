@@ -4,8 +4,8 @@ interface Props {
   logic: LoadedLogic;
 }
 
-const ExhibsFragment: React.FC<Props> = ({ logic }) => {
+const TestFragment: React.FC<Props> = ({ logic }) => {
   return <div />; // TODO
 };
 
-export default ExhibsFragment;
+export default TestFragment;

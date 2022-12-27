@@ -2,9 +2,9 @@ import useLogic from './use-logic';
 import Loading from '../../components/loading';
 import Failed from '../../components/failed';
 import MenuBarApp from '../../components/menu-bar-app';
-import ExhibAdsApp from '../../components/exhib-ads-app';
+import TestBannerApp from '../../components/test-banner-app';
 import FooterApp from '../../components/footer-app';
-import ExhibsExplorerFragment from './fragments/exhibs-explorer';
+import TestExplorerFragment from './fragments/test-explorer';
 import styles from './index.module.scss';
 
 const MainPage = () => {
@@ -21,8 +21,8 @@ const MainPage = () => {
   return (
     <>
       <MenuBarApp />
-      <ExhibAdsApp />
-      <ExhibsExplorerFragment logic={logic} />
+      <TestBannerApp />
+      <TestExplorerFragment logic={logic} />
       <FooterApp className={styles.footer} />
     </>
   );

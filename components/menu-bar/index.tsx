@@ -2,37 +2,37 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from './index.module.scss';
 import Categories from './categories';
-import useExhibCategories from '../../services/exhib-categories';
+import useSubCategories from '../../services/sub-categories';
 
 interface MenuBarProps {
-  exhibsHref: string;
-  companiesHref: string;
-  productsHref: string;
+  category2Href: string;
+  category3Href: string;
+  category4Href: string;
 }
 
-const MenuBar: React.FC<MenuBarProps> = ({ exhibsHref, companiesHref, productsHref }) => {
+const MenuBar: React.FC<MenuBarProps> = ({ category2Href, category3Href, category4Href }) => {
   const [isCategoriesOpened, setIsCategoriesOpened] = useState<boolean>(false);
-  const exhibCategories = useExhibCategories();
+  const category1SubCategories = useSubCategories();
 
   const toggleIsCategoriesOpened = () => {
     setIsCategoriesOpened(!isCategoriesOpened);
   };
 
   let clickableCategories;
-  if (exhibCategories != null) {
-    clickableCategories = exhibCategories.map(category => ({
+  if (category1SubCategories != null) {
+    clickableCategories = category1SubCategories.map(category => ({
       ...category,
-      url: `/exhibitions?category=${category.slug}`,
+      url: `/category1?category=${category.slug}`,
     }));
   }
 
   return (
     <div className={styles.cont}>
       <div className={styles.body}>
-        <span onClick={toggleIsCategoriesOpened}>카테고리</span>
-        <Link href={exhibsHref}>전시회</Link>
-        <Link href={companiesHref}>참가기업</Link>
-        <Link href={productsHref}>등록제품</Link>
+        <span onClick={toggleIsCategoriesOpened}>카테고리1</span>
+        <Link href={category2Href}>카테고리2</Link>
+        <Link href={category3Href}>카테고리3</Link>
+        <Link href={category4Href}>카테고리4</Link>
       </div>
       {isCategoriesOpened && (
         <div>

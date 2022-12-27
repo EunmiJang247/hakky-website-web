@@ -1,7 +1,7 @@
-import ExhibCategory from '../../data-types/exhib-category';
+import SubCategory from '../../data-types/sub-category';
 
-const useReadExhibCategories = () => {
-  return async (): Promise<ExhibCategory[]> => {
+const useReadSubCategories = () => {
+  return async (): Promise<SubCategory[]> => {
     // TODO 원래는 서버로부터 가져와야 함.
 
     return [
@@ -34,4 +34,4 @@ const useReadExhibCategories = () => {
   };
 };
 
-export default useReadExhibCategories;
+export default useReadSubCategories;

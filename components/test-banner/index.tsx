@@ -1,11 +1,11 @@
 import styles from './index.module.scss';
 
-const ExhibAds: React.FC = () => {
+const TestBanner: React.FC = () => {
   return (
     <div className={styles.cont}>
-      <span>전시회 광고</span>
+      <span>TestBanner</span>
     </div>
   );
 };
 
-export default ExhibAds;
+export default TestBanner;

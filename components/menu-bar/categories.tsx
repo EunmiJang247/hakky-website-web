@@ -1,20 +1,20 @@
 import Link from 'next/link';
-import ExhibCategory from '../../data-types/exhib-category';
+import SubCategory from '../../data-types/sub-category';
 import combineClassNames from '../../utils/combine-class-names';
 import styles from './categories.module.scss';
 
-interface ClickableExhibCategory extends ExhibCategory {
+interface ClickableSubCategory extends SubCategory {
   url: string;
 }
 
 interface Props {
   className?: string | undefined;
-  categories: ClickableExhibCategory[];
+  categories: ClickableSubCategory[];
 }
 
 const Categories: React.FC<Props> = ({ className, categories }) => (
   <div className={combineClassNames(styles.cont, className)}>
-    {categories.map((category: ClickableExhibCategory) => (
+    {categories.map((category: ClickableSubCategory) => (
       <Link key={category.id} href={category.url}>
         {category.name}
       </Link>
