@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './page-bodies/**/*.{js,ts,jsx,tsx}'],
+  purge: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+    './page-bodies/**/*.{js,ts,jsx,tsx}',
+    './modal-bodies/**/*.{js,ts,jsx,tsx}',
+  ],
   content: [],
   theme: {
     screens: {
@@ -18,7 +23,9 @@ module.exports = {
         'gradient-middle': '#901B8C',
         'gradient-end': '#E20B30',
         'main-blue': '#0D2ACD',
+        'light-gray': '#727272',
         'dark-gray': '#323232',
+        'darker-gray': '#242424',
       },
     },
   },

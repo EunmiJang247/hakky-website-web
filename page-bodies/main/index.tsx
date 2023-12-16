@@ -12,6 +12,7 @@ import TagSmall from '../../components/tag-small';
 import DivisionTeamRankTable from '../../components/division-team-rank-table';
 import DivisionStrikerRankTable from '../../components/division-striker-rank-table';
 import DivisionGoalieRankTable from '../../components/division-goalie-rank-table';
+import YoutubeModal from '../../modal-bodies/youtube';
 
 const MainPage = () => {
   const logic = useLogic();
@@ -33,7 +34,7 @@ const MainPage = () => {
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex justify-between h-full items-top gap-7 md:flex-col md:w-full">
             <Calendar />
-            <Youtube />
+            <Youtube setYoutubeUrl={logic.setYoutubeUrl} setYoutubeModalOpen={logic.setYoutubeModalOpen} />
           </div>
         </div>
         <div className="space60" />
@@ -72,6 +73,7 @@ const MainPage = () => {
         <div className="space120" />
       </div>
       <Footer />
+      {logic.youtubeModalOpen && <YoutubeModal setYoutubeModalOpen={logic.setYoutubeModalOpen} />}
     </div>
   );
 };

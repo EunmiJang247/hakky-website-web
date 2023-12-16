@@ -12,7 +12,7 @@ import DivisionsBtn from '../../components/division-btn';
 import DivisionStrikerRankTable from '../../components/division-striker-rank-table';
 import DivisionGoalieRankTable from '../../components/division-goalie-rank-table';
 import Footer from '../../components/footer';
-import TournamentPlan from '../../components/\btournament-plan';
+import TournamentPlan from '../../components/tournament-plan';
 
 const TeamDetail = () => {
   const [tabMenu, setTabMenu] = useState<string>('player');

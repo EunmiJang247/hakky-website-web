@@ -5,7 +5,7 @@ import MenuBar from '../../../components/menu-bar';
 import Footer from '../../../components/footer';
 import TagSmall from '../../../components/tag-small';
 import TagLarge from '../../../components/tag-large';
-import TournamentPlan from '../../../components/\btournament-plan';
+import TournamentPlan from '../../../components/tournament-plan';
 import Pagenation from '../../../components/pagination';
 
 const DivisionPlan = () => {

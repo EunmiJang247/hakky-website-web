@@ -5,7 +5,9 @@ import RightSlideMenu from '../menu-right-slide';
 
 const MenuBar: React.FC = () => {
   const [subMenuOpen, setSubMenuOpen] = useState<number>(0);
+  const [subSubMenuOpen, setSubSubMenuOpen] = useState<number>(0);
   const [sideNavOpen, setSideNavOpen] = useState<boolean>(false);
+
   return (
     <div className="w-full h-24 flex justify-center items-center bg-black sm:h-16">
       <div className="w-full max-w-[1420px] flex justify-between h-full items-center md:p-10 sm:p-5">
@@ -27,13 +29,28 @@ const MenuBar: React.FC = () => {
               <div className="text-white absolute top-[90px] bg-black">
                 {m.subMenu &&
                   subMenuOpen === idx &&
-                  m.subMenu.map(s => (
-                    <p
-                      className="px-3 py-2.5 hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
+                  m.subMenu.map((s, id) => (
+                    <div
+                      className="px-3 py-2.5 hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer relative w-32 flex justify-between items-center"
                       key={s.href}
+                      onMouseEnter={() => setSubSubMenuOpen(id)}
+                      onMouseLeave={() => setSubSubMenuOpen(0)}
                     >
-                      {s.name}
-                    </p>
+                      <p>{s.name}</p>
+                      {s.subMenu && <img src="/menubar/arrow.png" className="-rotate-90" />}
+                      {s.subMenu && subSubMenuOpen === id && (
+                        <div className="absolute left-full w-full top-0">
+                          {s.subMenu.map(sub => (
+                            <p
+                              className="px-3 py-2.5 bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
+                              key={sub.href}
+                            >
+                              {sub.name}
+                            </p>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
               </div>
             </div>
