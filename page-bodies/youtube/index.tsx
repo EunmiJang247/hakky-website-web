@@ -2,10 +2,7 @@ import useLogic from './use-logic';
 import Loading from '../../components/loading';
 import Failed from '../../components/failed';
 import MenuBar from '../../components/menu-bar';
-import PlayerDetailTable from '../../components/player-detail';
-import TagSmall from '../../components/tag-small';
 import Footer from '../../components/footer';
-import StrikerRankTable from '../../components/striker-rank-table';
 import Pagenation from '../../components/pagination';
 
 const Youtube = () => {
@@ -23,9 +20,9 @@ const Youtube = () => {
     <div className="bg-gradient bg-no-repeat bg-cover min-h-screen flex flex-col overflow-hidden">
       <MenuBar />
       <div className="space100" />
-      <div className="w-full flex justify-center items-center">
+      <div className="w-full flex justify-center items-center md:px-20 sm:px-5">
         <div className="w-full max-w-[1420px] flex justify-between h-full items-top gap-7 md:flex-col md:w-full">
-          <div className="grid grid-cols-4 gap-x-4 gap-y-8 ">
+          <div className="grid grid-cols-4 gap-x-4 gap-y-8 md:grid-cols-2 sm:grid-cols-1">
             <div className="flex gap-4 flex-col">
               <img src="/youtube-screen.png" alt="" />
               <div className="flex flex-col items-start">

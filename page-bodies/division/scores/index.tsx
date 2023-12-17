@@ -6,6 +6,7 @@ import Footer from '../../../components/footer';
 import TagSmall from '../../../components/tag-small';
 import TagLarge from '../../../components/tag-large';
 import DivisionTeamRankTable from '../../../components/division-team-rank-table';
+import MiddleBar from '../../../components/middle-bar';
 
 const DivisionScores = () => {
   const logic = useLogic();
@@ -24,20 +25,27 @@ const DivisionScores = () => {
       <div className="space60" />
       <div className="md:px-10 sm:px-5">
         <div className="w-full flex justify-center items-center">
-          <div className="w-full max-w-[1420px] flex flex-col justify-between h-full items-top gap-3 md:flex-col md:w-full">
+          <div className="w-full max-w-[1420px] flex flex-col justify-between h-full items-top md:flex-col md:w-full">
             <TagSmall title="League Division 일정" />
+            <div className="space20" />
             <TagLarge title="2023 남부리그" />
-            <div className="space20" />
+            <div className="space40" />
+            <MiddleBar />
+            <div className="space40" />
             <TagSmall title="디비전1" />
+            <div className="space20" />
             <DivisionTeamRankTable />
-            <div className="space20" />
+            <div className="space40 sm:space20" />
             <TagSmall title="디비전1" />
+            <div className="space20" />
             <DivisionTeamRankTable />
-            <div className="space20" />
+            <div className="space40 sm:space20" />
             <TagSmall title="디비전1" />
+            <div className="space20" />
             <DivisionTeamRankTable />
-            <div className="space20" />
+            <div className="space40 sm:space20" />
             <TagSmall title="디비전1" />
+            <div className="space20" />
             <DivisionTeamRankTable />
           </div>
         </div>

@@ -25,32 +25,21 @@ const DivisionScore = () => {
       <div className="space60" />
       <div className="md:px-10 sm:px-5">
         <div className="w-full flex justify-center items-center">
-          <div className="w-full max-w-[1420px] flex flex-col justify-between h-full items-top gap-3 md:flex-col md:w-full">
-            <div className="w-full flex justify-center">
-              <div className="w-[1420px]">
+          <div className="w-full max-w-[1420px] flex flex-col justify-between h-full items-top md:flex-col md:w-full">
+            <TagSmall title="2023 남부리그 DIV. 1 순위표" />
+            <div className="space20" />
+            <DivisionTeamRankTable />
+            <div className="space60 sm:space20" />
+            <div className="flex gap-5 md:flex-col md:gap-14">
+              <div className="w-[580px] md:w-full">
                 <TagSmall title="2023 남부리그 DIV. 1 순위표" />
+                <div className="space20" />
+                <DivisionStrikerRankTable />
               </div>
-            </div>
-            <div className="space20" />
-            <div className="w-full flex justify-center items-center">
-              <div className="w-full max-w-[1420px] flex items-center gap-2">
-                <DivisionTeamRankTable />
-              </div>
-            </div>
-            <div className="space20" />
-            <div className="space20" />
-            <div className="w-full flex justify-center">
-              <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
-                <div className="w-[580px] md:w-full">
-                  <TagSmall title="2023 남부리그 DIV. 1 순위표" />
-                  <div className="space20" />
-                  <DivisionStrikerRankTable />
-                </div>
-                <div className="flex-1">
-                  <TagSmall title="2023 남부리그 DIV. 1 순위표" />
-                  <div className="space20" />
-                  <DivisionGoalieRankTable />
-                </div>
+              <div className="flex-1">
+                <TagSmall title="2023 남부리그 DIV. 1 순위표" />
+                <div className="space20" />
+                <DivisionGoalieRankTable />
               </div>
             </div>
           </div>

@@ -21,22 +21,24 @@ const PlayerDetailPage = () => {
   return (
     <div className="bg-gradient bg-no-repeat bg-cover min-h-screen flex flex-col overflow-hidden">
       <MenuBar />
-      <div className="space100" />
-      <div className="w-full flex justify-center items-center">
-        <div className="w-full max-w-[1420px]">
-          <PlayerDetailTable />
+      <div className="md:px-10 sm:px-5">
+        <div className="space100" />
+        <div className="w-full flex justify-center items-center">
+          <div className="w-full max-w-[1420px]">
+            <PlayerDetailTable />
+          </div>
         </div>
-      </div>
-      <div className="space20" />
-      <div className="w-full flex justify-center">
-        <div className="w-[1420px]">
-          <TagSmall title="플레이어" />
+        <div className="space20" />
+        <div className="w-full flex justify-center">
+          <div className="w-[1420px]">
+            <TagSmall title="플레이어" />
+          </div>
         </div>
-      </div>
-      <div className="space20" />
-      <div className="w-full flex justify-center items-center">
-        <div className="w-full max-w-[1420px] flex items-center gap-2">
-          <StrikerRankTable />
+        <div className="space20" />
+        <div className="w-full flex justify-center items-center">
+          <div className="w-full max-w-[1420px] flex items-center gap-2">
+            <StrikerRankTable />
+          </div>
         </div>
       </div>
       <div className="space100" />

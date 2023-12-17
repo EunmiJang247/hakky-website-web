@@ -2,9 +2,9 @@ const StrikerRankTable = () => {
   return (
     <table className="w-full">
       <tbody className="bg-black">
-        <tr className="font16500blue flex justify-between py-5 border-b border-dark-gray">
+        <tr className="font16500blue sm:font12500blue flex justify-between py-5 border-b border-dark-gray">
           <th className="flex-1">시즌</th>
-          <th className="flex-1">팀</th>
+          <th className="w-1/5 sm:w-1/5 text-left pl-3">팀</th>
           <th className="flex-1">GP</th>
           <th className="flex-1">S</th>
           <th className="flex-1">G</th>
@@ -13,9 +13,9 @@ const StrikerRankTable = () => {
           <th className="flex-1">PIM</th>
           <th className="flex-1">S%</th>
         </tr>
-        <tr className="font1624500white flex justify-between py-4 border-b border-dark-gray">
+        <tr className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray">
           <td className="flex-1">시즌</td>
-          <td className="flex-1">팀</td>
+          <td className="w-1/5 sm:w-1/5 text-left pl-3">팀</td>
           <td className="flex-1">GP</td>
           <td className="flex-1">S</td>
           <td className="flex-1">G</td>
@@ -24,9 +24,9 @@ const StrikerRankTable = () => {
           <td className="flex-1">PIM</td>
           <td className="flex-1">S%</td>
         </tr>
-        <tr className="font1624500white flex justify-between py-4 border-b border-dark-gray">
+        <tr className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray">
           <td className="flex-1">시즌</td>
-          <td className="flex-1">팀</td>
+          <td className="w-1/5 sm:w-1/5 text-left pl-3">팀</td>
           <td className="flex-1">GP</td>
           <td className="flex-1">S</td>
           <td className="flex-1">G</td>
@@ -35,9 +35,9 @@ const StrikerRankTable = () => {
           <td className="flex-1">PIM</td>
           <td className="flex-1">S%</td>
         </tr>
-        <tr className="font1624500white flex justify-between py-4 border-b border-dark-gray">
+        <tr className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray">
           <td className="flex-1">시즌</td>
-          <td className="flex-1">팀</td>
+          <td className="w-1/5 sm:w-1/5 text-left pl-3">팀</td>
           <td className="flex-1">GP</td>
           <td className="flex-1">S</td>
           <td className="flex-1">G</td>
@@ -46,9 +46,9 @@ const StrikerRankTable = () => {
           <td className="flex-1">PIM</td>
           <td className="flex-1">S%</td>
         </tr>
-        <tr className="font1624500white flex justify-between py-4 border-b border-dark-gray">
+        <tr className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray">
           <td className="flex-1">TOTAL</td>
-          <td className="flex-1">팀</td>
+          <td className="w-1/5 sm:w-1/5 text-left pl-3"> </td>
           <td className="flex-1">GP</td>
           <td className="flex-1">S</td>
           <td className="flex-1">G</td>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import useLogic from './use-logic';
 import Loading from '../../components/loading';
 import Failed from '../../components/failed';
@@ -29,86 +28,88 @@ const TeamDetail = () => {
   return (
     <div className="bg-gradient bg-no-repeat bg-cover min-h-screen flex flex-col overflow-hidden">
       <MenuBar />
-      <div className="w-full flex justify-center items-center">
-        <div className="w-full max-w-[1420px]">
-          <div className="space100" />
-          <TeamDetailTable />
-          <div className="space60" />
-          <div className="flex">
-            <SelectBox />
-            <SelectBox />
-            <SelectBox />
-          </div>
-        </div>
-      </div>
-      <div className="space20" />
-      <div className="w-full flex justify-center">
-        <div className="w-[1420px]">
-          <TagSmall title="2023 남부리그 DIV. 1 순위표" />
-        </div>
-      </div>
-      <div className="space20" />
-      <div className="w-full flex justify-center items-center">
-        <div className="w-full max-w-[1420px] flex items-center gap-2">
-          <DivisionTeamRankTable />
-        </div>
-      </div>
-      <div className="space60" />
-      <div className="w-full flex justify-center items-center bg-black">
-        <div className="w-full max-w-[1420px] flex items-center ">
-          <button className="py-5 px-7 text-white cursor-pointer" type="button" onClick={() => setTabMenu('player')}>
-            선수
-          </button>
-          <button
-            className="py-5 px-7 text-white cursor-pointer"
-            type="button"
-            onClick={() => setTabMenu('tournament')}
-          >
-            경기
-          </button>
-        </div>
-      </div>
-      {tabMenu === 'player' && (
-        <>
-          <div className="space20" />
-          <DivisionsBtn />
-          <div className="space20" />
-          <div className="w-full flex justify-center items-center">
-            <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
-              <TagSmall title="공격수" />
-              <div className="space20" />
-              <DivisionStrikerRankTable />
+      <div className="md:px-10 sm:px-5">
+        <div className="w-full flex justify-center items-center">
+          <div className="w-full max-w-[1420px]">
+            <div className="space100" />
+            <TeamDetailTable />
+            <div className="space60" />
+            <div className="flex sm:flex-col">
+              <SelectBox />
+              <SelectBox />
+              <SelectBox />
             </div>
           </div>
-          <div className="space20" />
-          <div className="w-full flex justify-center items-center">
-            <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
-              <TagSmall title="수비수" />
-              <div className="space20" />
-              <DivisionStrikerRankTable />
-            </div>
+        </div>
+        <div className="space20" />
+        <div className="w-full flex justify-center">
+          <div className="w-[1420px]">
+            <TagSmall title="2023 남부리그 DIV. 1 순위표" />
           </div>
-          <div className="space20" />
-          <div className="w-full flex justify-center items-center">
-            <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
-              <TagSmall title="골리" />
-              <div className="space20" />
-              <DivisionGoalieRankTable />
-            </div>
+        </div>
+        <div className="space20" />
+        <div className="w-full flex justify-center items-center">
+          <div className="w-full max-w-[1420px] flex items-center gap-2">
+            <DivisionTeamRankTable />
           </div>
-        </>
-      )}
-      {tabMenu === 'tournament' && (
-        <>
-          <div className="space20" />
-          <div className="w-full flex justify-center items-center">
-            <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
-              <TournamentPlan />
-            </div>
+        </div>
+        <div className="space60" />
+        <div className="w-full flex justify-center items-center bg-black">
+          <div className="w-full max-w-[1420px] flex items-center ">
+            <button className="py-5 px-7 text-white cursor-pointer" type="button" onClick={() => setTabMenu('player')}>
+              선수
+            </button>
+            <button
+              className="py-5 px-7 text-white cursor-pointer"
+              type="button"
+              onClick={() => setTabMenu('tournament')}
+            >
+              경기
+            </button>
           </div>
-        </>
-      )}
-      <div className="space100" />
+        </div>
+        {tabMenu === 'player' && (
+          <>
+            <div className="space20" />
+            <DivisionsBtn />
+            <div className="space20" />
+            <div className="w-full flex justify-center items-center">
+              <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
+                <TagSmall title="공격수" />
+                <div className="space20" />
+                <DivisionStrikerRankTable />
+              </div>
+            </div>
+            <div className="space20" />
+            <div className="w-full flex justify-center items-center">
+              <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
+                <TagSmall title="수비수" />
+                <div className="space20" />
+                <DivisionStrikerRankTable />
+              </div>
+            </div>
+            <div className="space20" />
+            <div className="w-full flex justify-center items-center">
+              <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
+                <TagSmall title="골리" />
+                <div className="space20" />
+                <DivisionGoalieRankTable />
+              </div>
+            </div>
+          </>
+        )}
+        {tabMenu === 'tournament' && (
+          <>
+            <div className="space20" />
+            <div className="w-full flex justify-center items-center">
+              <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
+                <TournamentPlan />
+              </div>
+            </div>
+          </>
+        )}
+        <div className="space100" />
+      </div>
       <Footer />
     </div>
   );
