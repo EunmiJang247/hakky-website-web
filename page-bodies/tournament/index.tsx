@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import DivisionTitleBar from '../../components/division-title-bar';
 import Failed from '../../components/failed';
 import Footer from '../../components/footer';
 import Loading from '../../components/loading';
 import MenuBar from '../../components/menu-bar';
+import MiddleBar from '../../components/middle-bar';
 import TagSmall from '../../components/tag-small';
 import TournamentGoalieRankTable from '../../components/tournament-goalie-rank-table';
 import TournamentScoreDetail from '../../components/tournament-score-detail';
@@ -12,7 +14,7 @@ import TournamentTeamScore from '../../components/tournament-team-score';
 import useLogic from './use-logic';
 
 const Tournament = () => {
-  const [tournamentFinish, setTournamentFinish] = useState<boolean>(false);
+  const [tournamentFinish, setTournamentFinish] = useState<boolean>(true);
   const logic = useLogic();
 
   if (logic.status === 'LOADING') {
@@ -28,23 +30,20 @@ const Tournament = () => {
       <MenuBar />
       {tournamentFinish && (
         <>
-          <div className="space100" />
-          <div className="w-full flex justify-center items-center">
+          <div className="space100 md:space80 sm:space60" />
+          <div className="w-full flex justify-center items-center md:px-10 sm:px-5">
             <div className="w-full max-w-[1420px]">
+              <DivisionTitleBar />
+              <div className="space20" />
               <TournamentScoreDetail />
               <div className="space60" />
               <TagSmall title="결과" />
               <div className="space20" />
               <TournamentTeamScore />
-              <div className="space40" />
-              <div className="bg-black flex">
-                <p className="py-5 px-28 font1626700white bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end">
-                  Team1
-                </p>
-                <p className="py-5 px-28 font1626700white">Team2</p>
-              </div>
-              <div className="space60" />
-              <div className="flex gap-5">
+              <div className="space20" />
+              <MiddleBar />
+              <div className="space20" />
+              <div className="flex gap-5 md:flex-col">
                 <TournamentStrikerRankTable />
                 <TournamentGoalieRankTable />
               </div>
@@ -55,9 +54,11 @@ const Tournament = () => {
       )}
       {!tournamentFinish && (
         <>
-          <div className="space100" />
-          <div className="w-full flex justify-center items-center">
+          <div className="space100 md:space80 sm:space60" />
+          <div className="w-full flex justify-center items-center md:px-10 sm:px-5">
             <div className="w-full max-w-[1420px]">
+              <DivisionTitleBar />
+              <div className="space20" />
               <TournamentScoreDetailReady />
               <div className="space100" />
             </div>

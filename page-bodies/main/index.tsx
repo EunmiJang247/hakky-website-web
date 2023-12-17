@@ -38,7 +38,9 @@ const MainPage = () => {
           </div>
         </div>
         <div className="space60" />
-        <LeagueBar />
+      </div>
+      <LeagueBar />
+      <div className="md:px-10 sm:px-5">
         <div className="space20" />
         <DivisionsBtn />
         <div className="space20" />

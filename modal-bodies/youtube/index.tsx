@@ -19,7 +19,7 @@ const YoutubeModal: React.FC<Props> = ({ setYoutubeModalOpen }) => {
 
   return (
     <div id="myModal" className="modal-wrap" onClick={() => setYoutubeModalOpen(false)}>
-      <div className="modal-cont w-4/5 h-2/5">
+      <div className="modal-cont w-[1133px] h-[664px] md:w-[755px] md:h-[442px] sm:w-[350px] sm:h-[221px]">
         <iframe
           title="video"
           className="w-full h-full"

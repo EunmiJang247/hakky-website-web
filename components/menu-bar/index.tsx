@@ -22,11 +22,11 @@ const MenuBar: React.FC = () => {
               onMouseEnter={() => setSubMenuOpen(idx)}
               onMouseLeave={() => setSubMenuOpen(0)}
             >
-              <Link href={m.href} className="leading-[100px] pr-12 flex items-center gap-1">
-                <p className="text-white h-full">{m.name}</p>
+              <Link href={m.href} className="leading-[100px] pr-12 flex items-center gap-3">
+                <p className="font16700white h-full">{m.name}</p>
                 {m.subMenu && <img src="/menubar/arrow.png" />}
               </Link>
-              <div className="text-white absolute top-[90px] bg-black">
+              <div className="font16700white absolute top-[90px] bg-black">
                 {m.subMenu &&
                   subMenuOpen === idx &&
                   m.subMenu.map((s, id) => (
@@ -42,7 +42,7 @@ const MenuBar: React.FC = () => {
                         <div className="absolute left-full w-full top-0">
                           {s.subMenu.map(sub => (
                             <p
-                              className="px-3 py-2.5 bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
+                              className="px-3 py-2.5 font16700white bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
                               key={sub.href}
                             >
                               {sub.name}
