@@ -30,7 +30,7 @@ const MainPage = () => {
       <MenuBar />
       <Banner />
       <div className="space60" />
-      <div className="md:px-10 sm:px-5">
+      <div className="right-and-left-padding">
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex justify-between h-full items-top gap-7 md:flex-col md:w-full">
             <Calendar />
@@ -40,7 +40,7 @@ const MainPage = () => {
         <div className="space60" />
       </div>
       <LeagueBar />
-      <div className="md:px-10 sm:px-5">
+      <div className="right-and-left-padding">
         <div className="space20" />
         <DivisionsBtn />
         <div className="space20" />

@@ -28,7 +28,7 @@ const TeamDetail = () => {
   return (
     <div className="bg-gradient bg-no-repeat bg-cover min-h-screen flex flex-col overflow-hidden">
       <MenuBar />
-      <div className="md:px-10 sm:px-5">
+      <div className="right-and-left-padding">
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px]">
             <div className="space100" />

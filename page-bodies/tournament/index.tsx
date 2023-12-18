@@ -31,7 +31,7 @@ const Tournament = () => {
       {tournamentFinish && (
         <>
           <div className="space100 md:space80 sm:space60" />
-          <div className="w-full flex justify-center items-center md:px-10 sm:px-5">
+          <div className="w-full flex justify-center items-center right-and-left-padding">
             <div className="w-full max-w-[1420px]">
               <DivisionTitleBar />
               <div className="space20" />
@@ -55,7 +55,7 @@ const Tournament = () => {
       {!tournamentFinish && (
         <>
           <div className="space100 md:space80 sm:space60" />
-          <div className="w-full flex justify-center items-center md:px-10 sm:px-5">
+          <div className="w-full flex justify-center items-center right-and-left-padding">
             <div className="w-full max-w-[1420px]">
               <DivisionTitleBar />
               <div className="space20" />
