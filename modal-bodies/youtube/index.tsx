@@ -4,9 +4,10 @@ import Failed from '../../components/failed';
 
 interface Props {
   setYoutubeModalOpen: (value: boolean) => void;
+  youtubeUrl: string;
 }
 
-const YoutubeModal: React.FC<Props> = ({ setYoutubeModalOpen }) => {
+const YoutubeModal: React.FC<Props> = ({ setYoutubeModalOpen, youtubeUrl }) => {
   const logic = useLogic();
 
   if (logic.status === 'LOADING') {
@@ -23,7 +24,7 @@ const YoutubeModal: React.FC<Props> = ({ setYoutubeModalOpen }) => {
         <iframe
           title="video"
           className="w-full h-full"
-          src="https://www.youtube.com/embed/YwC0m0XaD2E?autoplay=1&mute=0"
+          src={`https://www.youtube.com/embed/${youtubeUrl}?autoplay=1&mute=0`}
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
