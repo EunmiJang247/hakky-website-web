@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { useState } from 'react';
-import menu from '../../data/menu';
-import RightSlideMenu from '../menu-right-slide';
+import { useContext, useState } from 'react';
+import MenuContext from '../../contexts/menus';
 
 const MenuBar: React.FC = () => {
-  const [subMenuOpen, setSubMenuOpen] = useState<number>(0);
-  const [subSubMenuOpen, setSubSubMenuOpen] = useState<number>(0);
+  const menuLis = useContext(MenuContext);
+  const [subMenuOpen, setSubMenuOpen] = useState<number>(-1);
+  const [subSubMenuOpen, setSubSubMenuOpen] = useState<number>(-1);
   const [sideNavOpen, setSideNavOpen] = useState<boolean>(false);
 
   return (
@@ -17,39 +17,53 @@ const MenuBar: React.FC = () => {
           </Link>
         </div>
         <div className="flex h-full md:hidden">
-          {menu.map((m, idx) => (
+          <div className="flex flex-col relative h-full">
+            <Link href="/youtube" className="leading-[100px] pr-12 flex items-center gap-3">
+              <p className="font16700white h-full">YOUTUBE</p>
+            </Link>
+          </div>
+          {menuLis?.map((m, idx) => (
             <div
               key={m.name}
               className="flex flex-col relative  h-full"
               onMouseEnter={() => setSubMenuOpen(idx)}
-              onMouseLeave={() => setSubMenuOpen(0)}
+              onMouseLeave={() => setSubMenuOpen(-1)}
             >
-              <Link href={m.href} className="leading-[100px] pr-12 flex items-center gap-3">
+              <Link href={`/division/${m.id}`} className="leading-[100px] pr-12 flex items-center gap-3">
                 <p className="font16700white h-full">{m.name}</p>
-                {m.subMenu && <img src="/menubar/arrow.png" />}
+                {m.divisions && <img src="/menubar/arrow.png" />}
               </Link>
               <div className="font16700white absolute top-[90px] bg-black">
-                {m.subMenu &&
+                {m.divisions && subMenuOpen === idx && (
+                  <div className="px-3 py-2.5 hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer relative w-32 flex justify-between items-center">
+                    규정
+                  </div>
+                )}
+                {m.divisions &&
                   subMenuOpen === idx &&
-                  m.subMenu.map((s, id) => (
+                  m.divisions.map((s, id) => (
                     <div
                       className="px-3 py-2.5 hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer relative w-32 flex justify-between items-center"
-                      key={s.href}
+                      key={s.divisionId}
                       onMouseEnter={() => setSubSubMenuOpen(id)}
-                      onMouseLeave={() => setSubSubMenuOpen(0)}
+                      onMouseLeave={() => setSubSubMenuOpen(-1)}
                     >
-                      <p>{s.name}</p>
-                      {s.subMenu && <img src="/menubar/arrow.png" className="-rotate-90" />}
-                      {s.subMenu && subSubMenuOpen === id && (
+                      <p>{s.divisionName}</p>
+                      <img src="/menubar/arrow.png" className="-rotate-90" />
+                      {subSubMenuOpen === id && (
                         <div className="absolute left-full w-full top-0">
-                          {s.subMenu.map(sub => (
-                            <p
-                              className="px-3 py-2.5 font16700white bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
-                              key={sub.href}
-                            >
-                              {sub.name}
-                            </p>
-                          ))}
+                          <p
+                            className="px-3 py-2.5 font16700white bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
+                            key="plan"
+                          >
+                            일정
+                          </p>
+                          <p
+                            className="px-3 py-2.5 font16700white bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
+                            key="score"
+                          >
+                            스코어
+                          </p>
                         </div>
                       )}
                     </div>
@@ -62,7 +76,7 @@ const MenuBar: React.FC = () => {
           <button onClick={() => setSideNavOpen(true)} type="button">
             <img src="/hamburger.png" className="cursor-pointer" />
           </button>
-          <RightSlideMenu sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} menu={menu} />
+          {/* <RightSlideMenu sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} menu={menu} /> */}
         </div>
       </div>
     </div>

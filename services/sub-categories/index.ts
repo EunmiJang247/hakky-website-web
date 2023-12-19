@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import SubCategoriesContext from '../../contexts/sub-categories';
+import SubCategoriesContext from '../../contexts/menus';
 
 const useSubCategories = () => {
   const categories = useContext(SubCategoriesContext);

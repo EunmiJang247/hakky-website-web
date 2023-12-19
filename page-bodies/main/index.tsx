@@ -34,15 +34,23 @@ const MainPage = () => {
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex justify-between h-full items-top gap-7 md:flex-col md:w-full">
             <Calendar logic={logic} />
-            <Youtube setYoutubeUrl={logic.setYoutubeUrl} setYoutubeModalOpen={logic.setYoutubeModalOpen} />
+            <Youtube
+              setYoutubeUrl={logic.setYoutubeUrl}
+              setYoutubeModalOpen={logic.setYoutubeModalOpen}
+              youtubes={logic.youtubes}
+            />
           </div>
         </div>
         <div className="space60" />
       </div>
-      <LeagueBar />
+      <LeagueBar
+        menuLis={logic.menuLis}
+        highlightLeague={logic.highlightLeague}
+        setHighlightLeague={logic.setHighlightLeague}
+      />
       <div className="right-and-left-padding">
         <div className="space20" />
-        <DivisionsBtn />
+        <DivisionsBtn highlightLeague={logic.highlightLeague} />
         <div className="space20" />
         <div className="space20" />
         <div className="w-full flex justify-center">
@@ -75,7 +83,9 @@ const MainPage = () => {
         <div className="space120" />
       </div>
       <Footer />
-      {logic.youtubeModalOpen && <YoutubeModal setYoutubeModalOpen={logic.setYoutubeModalOpen} youtubeUrl="" />}
+      {logic.youtubeModalOpen && (
+        <YoutubeModal setYoutubeModalOpen={logic.setYoutubeModalOpen} youtubeUrl={logic.youtubeUrl} />
+      )}
     </div>
   );
 };

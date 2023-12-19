@@ -1,9 +1,9 @@
 interface Menu {
-  href: string;
+  id: string;
   name: string;
-  subMenu?: {
-    href: string;
-    name: string;
+  divisions?: {
+    divisionId: string;
+    divisionName: string;
   }[];
 }
 

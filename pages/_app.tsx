@@ -1,13 +1,13 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import SubCategoriesProvider from '../providers/sub-categories';
+import MenusProvider from '../providers/menus';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <SubCategoriesProvider>
+    <MenusProvider>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <Component {...pageProps} />
-    </SubCategoriesProvider>
+    </MenusProvider>
   );
 };
 
