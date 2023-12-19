@@ -1,6 +1,5 @@
 import axios from 'axios';
 import Youtubes from '../../../data-types/youtube';
-import youtubeParser from '../../../parser/youtube';
 import useApiAddr from '../../api-addr';
 
 type Params = {

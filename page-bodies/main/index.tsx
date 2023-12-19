@@ -33,7 +33,7 @@ const MainPage = () => {
       <div className="right-and-left-padding">
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex justify-between h-full items-top gap-7 md:flex-col md:w-full">
-            <Calendar />
+            <Calendar logic={logic} />
             <Youtube setYoutubeUrl={logic.setYoutubeUrl} setYoutubeModalOpen={logic.setYoutubeModalOpen} />
           </div>
         </div>
@@ -75,7 +75,7 @@ const MainPage = () => {
         <div className="space120" />
       </div>
       <Footer />
-      {logic.youtubeModalOpen && <YoutubeModal setYoutubeModalOpen={logic.setYoutubeModalOpen} />}
+      {logic.youtubeModalOpen && <YoutubeModal setYoutubeModalOpen={logic.setYoutubeModalOpen} youtubeUrl="" />}
     </div>
   );
 };

@@ -11,8 +11,13 @@ import {
   differenceInCalendarDays,
 } from 'date-fns';
 import TagLarge from '../tag-large';
+import { LoadedLogic } from '../../page-bodies/main/use-logic';
 
-const Calendar: React.FC = () => {
+interface Props {
+  logic: LoadedLogic;
+}
+
+const Calendar: React.FC<Props> = ({ logic }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(currentDate);
@@ -22,9 +27,11 @@ const Calendar: React.FC = () => {
   const weekMobile = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const nextMonthHandler = useCallback(() => {
     setCurrentDate(addMonths(currentDate, 1));
+    logic.setCurrentDate(addMonths(currentDate, 1));
   }, [currentDate]);
   const prevMonthHandler = useCallback(() => {
     setCurrentDate(subMonths(currentDate, 1));
+    logic.setCurrentDate(subMonths(currentDate, 1));
   }, [currentDate]);
   const createMonth = useMemo(() => {
     const monthArray = [];

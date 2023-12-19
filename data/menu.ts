@@ -1,7 +1,7 @@
 const MENU = [
   {
     name: 'YOUTUBE',
-    href: '/YOUTUBE',
+    href: '/youtube',
   },
   {
     name: 'MENU1',

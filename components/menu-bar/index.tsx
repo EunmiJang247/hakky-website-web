@@ -12,7 +12,9 @@ const MenuBar: React.FC = () => {
     <div className="w-full h-24 flex justify-center items-center bg-black sm:h-16">
       <div className="w-full max-w-[1420px] flex justify-between h-full items-center md:p-10 sm:p-5">
         <div className="text-white">
-          <img src="/logo.png" alt="logo" className="w-40 sm:w-32" />
+          <Link href="/">
+            <img src="/logo.png" alt="logo" className="w-40 sm:w-32" />
+          </Link>
         </div>
         <div className="flex h-full md:hidden">
           {menu.map((m, idx) => (
