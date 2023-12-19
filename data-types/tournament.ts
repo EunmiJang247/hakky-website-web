@@ -9,6 +9,9 @@ interface Tournament {
   viewCount: number;
   publishedAt: Date;
   likeCount: number;
+  tournamentDate: string;
+  homeTeamName: string;
+  awayTeamName: string;
 }
 
 export default Tournament;

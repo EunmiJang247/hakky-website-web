@@ -96,6 +96,26 @@ const Calendar: React.FC<Props> = ({ logic }) => {
               <span className="text-white border border-solid border-[#323232] absolute w-10 h-8 text-center leading-8 sm:border-none">
                 {format(v, 'd')}
               </span>
+
+              <div className="mt-8 p-1 px-2">
+                {logic.tournaments.map(t => {
+                  const tournamentMonth = new Date(t.tournamentDate).getMonth();
+                  const tournamentDate = new Date(t.tournamentDate).getDate();
+                  const nowMonth = v.getMonth();
+                  const nowDate = v.getDate();
+                  if (tournamentMonth === nowMonth && tournamentDate === nowDate) {
+                    return (
+                      <p
+                        className="text-white bg-dark-gray rounded py-1 px-2 cursor-pointer font12400gray truncate"
+                        key={t.id}
+                      >
+                        {t.homeTeamName} vs {t.awayTeamName}
+                      </p>
+                    );
+                  }
+                  return '';
+                })}
+              </div>
             </div>
           );
         })}

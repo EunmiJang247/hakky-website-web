@@ -1,16 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import {
-  format,
-  addMonths,
-  subMonths,
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
-  endOfWeek,
-  addDays,
-  differenceInCalendarDays,
-} from 'date-fns';
+import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import Tournament from '../../data-types/tournament';
 import useReadTournamentsCalendar from '../../services/tournament/calendar';
 
@@ -24,6 +14,7 @@ type LoadedLogic = {
   setYoutubeModalOpen: (value: boolean) => void;
   setYoutubeUrl: (value: string) => void;
   setCurrentDate: (value: Date) => void;
+  tournaments: Tournament[];
 };
 
 type FailedLogic = {
@@ -71,7 +62,7 @@ const useLogic = (): Logic => {
         init();
       }
     }
-  }, [router.isReady]);
+  }, [router.isReady, currentDate]);
 
   return {
     status: 'LOADED',
@@ -79,6 +70,7 @@ const useLogic = (): Logic => {
     setYoutubeModalOpen,
     setYoutubeUrl,
     setCurrentDate,
+    tournaments,
   };
 };
 
