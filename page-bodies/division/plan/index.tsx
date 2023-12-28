@@ -6,7 +6,6 @@ import Footer from '../../../components/footer';
 import TagSmall from '../../../components/tag-small';
 import TagLarge from '../../../components/tag-large';
 import TournamentPlan from '../../../components/tournament-plan';
-import Pagenation from '../../../components/pagination';
 
 const DivisionPlan = () => {
   const logic = useLogic();
@@ -26,15 +25,14 @@ const DivisionPlan = () => {
       <div className="right-and-left-padding">
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex flex-col justify-between h-full items-top gap-3 md:flex-col md:w-full">
-            <TagSmall title="League Division 일정" />
-            <TagLarge title="2023 남부리그 DIV. 2 일정" />
+            <TagSmall title={`${logic.division.leagueName} • 일정`} />
+            <TagLarge title={`${logic.division.name} 일정`} />
             <div className="space20 sm:space0" />
-            <TournamentPlan />
+            <TournamentPlan data={logic.data} />
           </div>
         </div>
       </div>
       <div className="space60 md:space30" />
-      <Pagenation count={100} pageCardCount={10} />
       <div className="space60" />
       <Footer />
     </div>

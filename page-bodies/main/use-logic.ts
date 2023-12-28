@@ -7,6 +7,8 @@ import useReadYoutubes from '../../services/youtube/read-list';
 import { Youtube } from '../../data-types/youtube';
 import MenuContext from '../../contexts/menus';
 import Menu from '../../data-types/menu';
+import Division, { PlayerScore, TeamScore } from '../../data-types/division';
+import useReadDivision from '../../services/division/read';
 
 type LoadingLogic = {
   status: 'LOADING';
@@ -24,6 +26,11 @@ type LoadedLogic = {
   menuLis: Menu[] | undefined;
   highlightLeague: Menu | undefined;
   setHighlightLeague: (value: Menu) => void;
+  highlightDivision: any;
+  onDivisionBtnClick: (value: number) => void;
+  teams: TeamScore[] | undefined;
+  strikers: PlayerScore[] | undefined;
+  golies: PlayerScore[] | undefined;
 };
 
 type FailedLogic = {
@@ -36,6 +43,7 @@ const useLogic = (): Logic => {
   const menuLis = useContext(MenuContext);
   const router = useRouter();
   const readTournamentApi = useReadTournamentsCalendar();
+  const readDivisionApi = useReadDivision();
   const readYoutubes = useReadYoutubes();
   const [youtubeModalOpen, setYoutubeModalOpen] = useState<boolean>(false);
   const [tournaments, setTournaments] = useState<Tournament[]>([]);
@@ -48,6 +56,10 @@ const useLogic = (): Logic => {
   const startDate = startOfWeek(monthStart);
   const endDate = endOfWeek(monthEnd);
   const [highlightLeague, setHighlightLeague] = useState<Menu | undefined>();
+  const [highlightDivision, setHighlightDivision] = useState<Division | undefined>();
+  const [teams, setTeams] = useState<TeamScore[]>();
+  const [strikers, setStrikers] = useState<PlayerScore[]>();
+  const [golies, setGolies] = useState<PlayerScore[]>();
 
   const init = async () => {
     try {
@@ -63,6 +75,52 @@ const useLogic = (): Logic => {
       console.error(error);
     }
   };
+
+  const readDivision = async (id: string) => {
+    const divisionFromServer = await readDivisionApi({ id });
+    if (divisionFromServer) {
+      setHighlightDivision(divisionFromServer);
+      const teamListByRank = divisionFromServer.teamScore;
+      teamListByRank.sort((a: TeamScore, b: TeamScore) => b.score.PTS - a.score.PTS);
+      setTeams(teamListByRank);
+
+      const strikerListByRank = divisionFromServer.playerScore;
+      strikerListByRank.sort(function compare(a: PlayerScore, b: PlayerScore) {
+        const before = a.score.P ?? 0;
+        const after = b.score.P ?? 0;
+        if (before > after) return -1;
+        if (before < after) return 1;
+        return 0;
+      });
+      setStrikers(strikerListByRank);
+
+      const goalieListByRank = divisionFromServer.playerScore;
+      goalieListByRank.sort(function compare(a: PlayerScore, b: PlayerScore) {
+        const before = a.score.PTS ?? 0;
+        const after = b.score.PTS ?? 0;
+        if (before > after) return -1;
+        if (before < after) return 1;
+        return 0;
+      });
+      setGolies(strikerListByRank);
+    }
+  };
+
+  const onDivisionBtnClick = (idx: number) => {
+    if (highlightLeague && highlightLeague?.divisions && highlightLeague?.divisions.length > 0) {
+      readDivision(highlightLeague.divisions[idx].divisionId);
+    } else {
+      setHighlightDivision(undefined);
+    }
+  };
+
+  useEffect(() => {
+    if (highlightLeague && highlightLeague?.divisions && highlightLeague?.divisions.length > 0) {
+      readDivision(highlightLeague.divisions[0].divisionId);
+    } else {
+      setHighlightDivision(undefined);
+    }
+  }, [highlightLeague]);
 
   useEffect(() => {
     if (router.isReady) {
@@ -94,6 +152,11 @@ const useLogic = (): Logic => {
     menuLis,
     highlightLeague,
     setHighlightLeague,
+    highlightDivision,
+    onDivisionBtnClick,
+    teams,
+    strikers,
+    golies,
   };
 };
 

@@ -52,18 +52,20 @@ const MenuBar: React.FC = () => {
                       <img src="/menubar/arrow.png" className="-rotate-90" />
                       {subSubMenuOpen === id && (
                         <div className="absolute left-full w-full top-0">
-                          <p
-                            className="px-3 py-2.5 font16700white bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
+                          <Link
+                            className="px-3 py-2.5 font16700white bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer block"
                             key="plan"
+                            href={`/division/plan/${s.divisionId}`}
                           >
                             일정
-                          </p>
-                          <p
-                            className="px-3 py-2.5 font16700white bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer"
+                          </Link>
+                          <Link
+                            className="px-3 py-2.5 font16700white bg-black hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer block"
                             key="score"
+                            href={`/division/score/${s.divisionId}`}
                           >
                             스코어
-                          </p>
+                          </Link>
                         </div>
                       )}
                     </div>

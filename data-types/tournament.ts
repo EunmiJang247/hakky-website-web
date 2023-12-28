@@ -1,4 +1,5 @@
 import Id from './id';
+import S3FileType from './s3-file';
 
 interface Tournament {
   id: Id;
@@ -12,6 +13,12 @@ interface Tournament {
   tournamentDate: string;
   homeTeamName: string;
   awayTeamName: string;
+  awayTeamGoalCount: number;
+  homeTeamGoalCount: number;
+  time: string;
+  venuePlace: string;
+  homeTeamLogo: S3FileType;
+  awayTeamLogo: S3FileType;
 }
 
 export default Tournament;

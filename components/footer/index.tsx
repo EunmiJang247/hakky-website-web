@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const Footer = () => {
   return (
     <>
@@ -19,13 +21,14 @@ const Footer = () => {
                 YOUTUBE
               </span>
             </p>
-            <div className="flex mt-6">
-              <button
+            <div className="flex mt-6 itmes-center">
+              <Link
+                href="https://www.youtube.com/@Hockeytv_"
                 type="button"
-                className="text-white bg-dark-gray px-4 min-w-[296px] text-left font12400gray sm:min-w-[200px]"
+                className="text-white bg-dark-gray px-4 min-w-[296px] text-left font12400gray sm:min-w-[200px] flex items-center"
               >
-                https://naver.com
-              </button>
+                https://www.youtube.com/@Hockeytv_
+              </Link>
               <img src="/footer/footer-youtube-icon.png" alt="" />
             </div>
           </div>

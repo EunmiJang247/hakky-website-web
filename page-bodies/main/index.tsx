@@ -48,40 +48,54 @@ const MainPage = () => {
         highlightLeague={logic.highlightLeague}
         setHighlightLeague={logic.setHighlightLeague}
       />
-      <div className="right-and-left-padding">
-        <div className="space20" />
-        <DivisionsBtn highlightLeague={logic.highlightLeague} />
-        <div className="space20" />
-        <div className="space20" />
-        <div className="w-full flex justify-center">
-          <div className="w-[1420px]">
-            <TagSmall title="2023 남부리그 DIV. 1 순위표" />
-          </div>
-        </div>
-        <div className="space20" />
-        <div className="w-full flex justify-center items-center">
-          <div className="w-full max-w-[1420px] flex items-center gap-2">
-            <DivisionTeamRankTable />
-          </div>
-        </div>
-        <div className="space20" />
-        <div className="space20" />
-        <div className="w-full flex justify-center">
-          <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
-            <div className="w-[580px] md:w-full">
-              <TagSmall title="2023 남부리그 DIV. 1 순위표" />
+      {logic.highlightDivision && (
+        <div className="right-and-left-padding">
+          <div className="space20" />
+          <DivisionsBtn
+            highlightLeague={logic.highlightLeague}
+            onDivisionBtnClick={logic.onDivisionBtnClick}
+            highlightDivision={logic.highlightDivision}
+          />
+          {logic.highlightDivision.teamScore.length > 0 && (
+            <>
               <div className="space20" />
-              <DivisionStrikerRankTable />
-            </div>
-            <div className="flex-1">
-              <TagSmall title="2023 남부리그 DIV. 1 순위표" />
               <div className="space20" />
-              <DivisionGoalieRankTable />
-            </div>
-          </div>
+              <div className="w-full flex justify-center">
+                <div className="w-[1420px]">
+                  <TagSmall title={`${logic.highlightDivision?.name}순위표`} />
+                </div>
+              </div>
+              <div className="space20" />
+              <div className="w-full flex justify-center items-center">
+                <div className="w-full max-w-[1420px] flex items-center gap-2">
+                  <DivisionTeamRankTable teams={logic.teams} />
+                </div>
+              </div>
+            </>
+          )}
+          {logic.highlightDivision.teamScore.length > 0 && (
+            <>
+              <div className="space20" />
+              <div className="w-full flex justify-center">
+                <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
+                  <div className="w-[580px] md:w-full">
+                    <TagSmall title={`${logic.highlightDivision?.name} 공격수 순위표`} />
+                    <div className="space20" />
+                    <DivisionStrikerRankTable strikers={logic.strikers} />
+                  </div>
+                  <div className="flex-1">
+                    <TagSmall title={`${logic.highlightDivision?.name} 골리 순위표`} />
+                    <div className="space20" />
+                    <DivisionGoalieRankTable golies={logic.golies} />
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+          <div className="space120 sm:space60" />
         </div>
-        <div className="space120" />
-      </div>
+      )}
+      {!logic.highlightDivision && <div className="space100 sm:space60" />}
       <Footer />
       {logic.youtubeModalOpen && (
         <YoutubeModal setYoutubeModalOpen={logic.setYoutubeModalOpen} youtubeUrl={logic.youtubeUrl} />
