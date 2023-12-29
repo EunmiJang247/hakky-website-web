@@ -9,7 +9,7 @@ const MenuBar: React.FC = () => {
   const [sideNavOpen, setSideNavOpen] = useState<boolean>(false);
 
   return (
-    <div className="w-full h-24 flex justify-center items-center bg-black sm:h-16">
+    <div className="w-full h-24 flex justify-center items-center bg-black sm:h-16 z-50">
       <div className="w-full max-w-[1420px] flex justify-between h-full items-center md:p-10 sm:p-5">
         <div className="text-white">
           <Link href="/">

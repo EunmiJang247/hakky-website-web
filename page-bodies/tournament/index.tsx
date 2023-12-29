@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import DivisionTitleBar from '../../components/division-title-bar';
 import Failed from '../../components/failed';
 import Footer from '../../components/footer';
@@ -14,7 +13,6 @@ import TournamentTeamScore from '../../components/tournament-team-score';
 import useLogic from './use-logic';
 
 const Tournament = () => {
-  const [tournamentFinish, setTournamentFinish] = useState<boolean>(true);
   const logic = useLogic();
 
   if (logic.status === 'LOADING') {
@@ -28,36 +26,43 @@ const Tournament = () => {
   return (
     <div className="bg-gradient bg-no-repeat bg-cover min-h-screen flex flex-col overflow-hidden">
       <MenuBar />
-      {tournamentFinish && (
+      {(logic.tournamentData.homeTeamGoalCount || logic.tournamentData.awayTeamGoalCount) && (
         <>
           <div className="space100 md:space80 sm:space60" />
           <div className="w-full flex justify-center items-center right-and-left-padding">
             <div className="w-full max-w-[1420px]">
-              <DivisionTitleBar />
+              <DivisionTitleBar divisionTitle={logic.tournamentData.divisionName} />
               <div className="space20" />
-              <TournamentScoreDetail />
+              <TournamentScoreDetail tournamentData={logic.tournamentData} />
               <div className="space60" />
               <TagSmall title="결과" />
               <div className="space20" />
-              <TournamentTeamScore />
+              <TournamentTeamScore
+                optionsGoalsHome={logic.optionsGoalsHome}
+                optionsGoalsAway={logic.optionsGoalsAway}
+              />
               <div className="space20" />
-              <MiddleBar />
+              <MiddleBar
+                setTabName={logic.setTabName}
+                homeTeamName={logic.tournamentData.homeTeamName}
+                awayTeamName={logic.tournamentData.awayTeamName}
+              />
               <div className="space20" />
               <div className="flex gap-5 md:flex-col">
-                <TournamentStrikerRankTable />
-                <TournamentGoalieRankTable />
+                <TournamentStrikerRankTable tournamentData={logic.tournamentData} />
+                <TournamentGoalieRankTable tournamentData={logic.tournamentData} />
               </div>
               <div className="space100" />
             </div>
           </div>
         </>
       )}
-      {!tournamentFinish && (
+      {!logic.tournamentData.homeTeamGoalCount && !logic.tournamentData.awayTeamGoalCount && (
         <>
           <div className="space100 md:space80 sm:space60" />
           <div className="w-full flex justify-center items-center right-and-left-padding">
             <div className="w-full max-w-[1420px]">
-              <DivisionTitleBar />
+              <DivisionTitleBar divisionTitle={logic.tournamentData.divisionName} />
               <div className="space20" />
               <TournamentScoreDetailReady />
               <div className="space100" />
