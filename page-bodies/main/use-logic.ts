@@ -65,9 +65,6 @@ const useLogic = (): Logic => {
     try {
       const tournamentsFromServer = await readTournamentApi({ startDate, endDate });
       setTournaments(tournamentsFromServer);
-      if (menuLis !== undefined) {
-        setHighlightLeague(menuLis[0]);
-      }
       const youtubeFromServe = await readYoutubes({ limit: 6, skip: 0 });
       setYoutubes(youtubeFromServe.result);
     } catch (error) {
@@ -121,6 +118,12 @@ const useLogic = (): Logic => {
       setHighlightDivision(undefined);
     }
   }, [highlightLeague]);
+
+  useEffect(() => {
+    if (menuLis !== undefined) {
+      setHighlightLeague(menuLis[0]);
+    }
+  }, [menuLis]);
 
   useEffect(() => {
     init();

@@ -31,7 +31,7 @@ const Tournament = () => {
           <div className="space100 md:space80 sm:space60" />
           <div className="w-full flex justify-center items-center right-and-left-padding">
             <div className="w-full max-w-[1420px]">
-              <DivisionTitleBar divisionTitle={logic.tournamentData.divisionName} />
+              <DivisionTitleBar divisionTitle={logic.tournamentData.divisionName} year={logic.tournamentData.year} />
               <div className="space20" />
               <TournamentScoreDetail tournamentData={logic.tournamentData} />
               <div className="space60" />
@@ -63,9 +63,9 @@ const Tournament = () => {
           <div className="space100 md:space80 sm:space60" />
           <div className="w-full flex justify-center items-center right-and-left-padding">
             <div className="w-full max-w-[1420px]">
-              <DivisionTitleBar divisionTitle={logic.tournamentData.divisionName} />
+              <DivisionTitleBar divisionTitle={logic.tournamentData.divisionName} year={logic.tournamentData.year} />
               <div className="space20" />
-              <TournamentScoreDetailReady />
+              <TournamentScoreDetailReady tournamentData={logic.tournamentData} />
               <div className="space100" />
             </div>
           </div>

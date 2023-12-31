@@ -17,7 +17,9 @@ type OptionsGoal = {
 };
 
 interface Tournament {
+  year: string;
   id: Id;
+  yaer: string;
   createdAt: Date;
   link: string;
   thumbnail: string;

@@ -44,10 +44,9 @@ const useLogic = (): Logic => {
       const { id } = router.query;
       if (typeof id === 'string') {
         const divisionFromServer = await readTournament({ id: id.toString() });
-        setTournamentData(divisionFromServer);
-        console.log(tournamentData);
         const homeScore = giveMeTeamResult(divisionFromServer.optionsGoalsHome);
         const awayScore = giveMeTeamResult(divisionFromServer.optionsGoalsAway);
+        setTournamentData(divisionFromServer);
         setoptionsGoalsHome({ homeTeamName: divisionFromServer.homeTeamName, homeScore });
         setoptionsGoalsAway({ awayTeamName: divisionFromServer.awayTeamName, awayScore });
       }
@@ -58,10 +57,8 @@ const useLogic = (): Logic => {
   };
 
   useEffect(() => {
-    if (router.isReady) {
-      init();
-    }
-  }, [router.isReady]);
+    init();
+  }, [router]);
 
   if (tournamentData === undefined) {
     return {

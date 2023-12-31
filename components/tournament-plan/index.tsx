@@ -54,22 +54,26 @@ const TournamentPlan: React.FC<Props> = ({ data }) => {
             <div className="bg-black px-8 sm:px-4 py-2 border-b border-dark-gray font1620700lightgray sm:font12700lightgray">
               {new Date(d.tournamentDate).toLocaleDateString()}
             </div>
-            <div className="flex items-center justify-between bg-black text-white px-8 py-7 sm:flex-col md:gap-5">
-              <p className="font15500white">
+            <div className="flex items-center justify-center bg-black text-white px-8 py-7 sm:flex-col md:gap-5 relative sm:static">
+              <p className="font15500white absolute left-7 sm:static">
                 {d.time} <span className="font15500gray ml-2">{d.venuePlace}</span>
               </p>
               <div className="flex gap-5 items-center">
                 <div className="flex gap-1.5 font16700white sm:font12700white">
-                  {d.homeTeamName} <img src="/small-logo.png" alt="logo" />
+                  {d.homeTeamName} <img src={d.homeTeamLogo.tempUrl} alt="logo" className="w-5 h-5" />
                 </div>
                 <div className="bg-dark-gray py-3 px-16 md:py-2 md:px-5">{d.time}</div>
                 <div className="flex gap-1.5 font16700white sm:font12700white">
-                  <img src="/small-logo.png" alt="logo" /> {d.awayTeamName}
+                  <img src={d.awayTeamLogo.tempUrl} alt="logo" className="w-5 h-5" /> {d.awayTeamName}
                 </div>
               </div>
-              <button type="button" className="px-3 py-1 text-white border">
+              <Link
+                type="button"
+                className="px-3 py-1 text-white border absolute right-7 sm:static"
+                href={`/tournament/${d.id}`}
+              >
                 자세히보기
-              </button>
+              </Link>
             </div>
           </div>
         );

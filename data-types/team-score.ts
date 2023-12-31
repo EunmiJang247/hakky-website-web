@@ -13,17 +13,22 @@ type PlayerScoreResult = {
 
 type PlayerScoreEach = {
   playerId: Id;
-  year: string;
+  playerName?: string;
+  position?: string;
+  playerTeamName?: string;
   score: {
-    G: number;
-    A: number;
-    PTS: number;
-    GP: number;
-    GD: number;
-    L: number;
-    OTL: number;
-    T: number;
-    OTW: number;
+    G?: number;
+    A?: number;
+    PTS?: number;
+    GP?: number;
+    GD?: number;
+    L?: number;
+    OTL?: number;
+    T?: number;
+    OTW?: number;
+    GA?: number;
+    SV: number;
+    SVPercent: number;
   };
 };
 

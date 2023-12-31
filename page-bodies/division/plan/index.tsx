@@ -26,7 +26,7 @@ const DivisionPlan = () => {
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex flex-col justify-between h-full items-top gap-3 md:flex-col md:w-full">
             <TagSmall title={`${logic.division.leagueName} • 일정`} />
-            <TagLarge title={`${logic.division.name} 일정`} />
+            <TagLarge title={`${logic.division.name}`} />
             <div className="space20 sm:space0" />
             <TournamentPlan data={logic.data} />
           </div>

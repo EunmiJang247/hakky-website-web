@@ -1,10 +1,12 @@
 import { PlayerScore } from '../../data-types/division';
+import { PlayerScoreEach } from '../../data-types/team-score';
 
 interface Props {
-  strikers: PlayerScore[] | undefined;
+  strikers: PlayerScore[] | undefined | PlayerScoreEach[];
+  teamName?: string;
 }
 
-const DivisionStrikerRankTable: React.FC<Props> = ({ strikers }) => {
+const DivisionStrikerRankTable: React.FC<Props> = ({ strikers, teamName }) => {
   return (
     <table className="w-full">
       <tbody className="bg-black">
@@ -27,10 +29,10 @@ const DivisionStrikerRankTable: React.FC<Props> = ({ strikers }) => {
                 <td className="w-[10%]">{idx + 1}</td>
                 <td className="w-[20%]">{p.playerName}</td>
                 <td className="w-[20%]">{p.position ?? ''}</td>
-                <td className="w-[20%]">{p.playerTeamName}</td>
+                <td className="w-[20%]">{p.playerTeamName ? p.playerTeamName : teamName}</td>
                 <td className="w-[13%]">{p.score.G ?? 0}</td>
                 <td className="w-[13%]">{p.score.A ?? 0}</td>
-                <td className="w-[13%]">{p.score.P ?? 0}</td>
+                <td className="w-[13%]">{p.score.PTS ?? 0}</td>
               </tr>
             );
           }

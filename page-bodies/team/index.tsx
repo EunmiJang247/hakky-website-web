@@ -5,9 +5,10 @@ import Failed from '../../components/failed';
 import MenuBar from '../../components/menu-bar';
 import TeamDetailTable from '../../components/team-detail';
 import Footer from '../../components/footer';
-import TournamentPlan from '../../components/tournament-plan';
 import YearlyTeamRankTable from '../../components/yearly-team-rank-table';
-import TeamPlayerTable from '../../components/team-player-table';
+import DivisionGoalieRankTable from '../../components/division-goalie-rank-table';
+import DivisionStrikerRankTable from '../../components/division-striker-rank-table';
+import TagSmall from '../../components/tag-small';
 
 const TeamDetail = () => {
   const [tabMenu, setTabMenu] = useState<string>('player');
@@ -41,11 +42,23 @@ const TeamDetail = () => {
         <div className="space60" />
         <div className="w-full flex justify-center items-center bg-black">
           <div className="w-full max-w-[1420px] flex items-center ">
-            <button className="py-5 px-7 text-white cursor-pointer" type="button" onClick={() => setTabMenu('player')}>
+            <button
+              className={
+                tabMenu === 'player'
+                  ? 'py-5 px-7 text-white cursor-pointer border-b-4 border-b-main-blue'
+                  : 'py-5 px-7 text-white cursor-pointer'
+              }
+              type="button"
+              onClick={() => setTabMenu('player')}
+            >
               선수
             </button>
             <button
-              className="py-5 px-7 text-white cursor-pointer"
+              className={
+                tabMenu === 'tournament'
+                  ? 'py-5 px-7 text-white cursor-pointer border-b-4 border-b-main-blue'
+                  : 'py-5 px-7 text-white cursor-pointer'
+              }
               type="button"
               onClick={() => setTabMenu('tournament')}
             >
@@ -59,10 +72,15 @@ const TeamDetail = () => {
             <div className="space20" />
             <div className="w-full flex justify-center items-center">
               <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
-                <TeamPlayerTable players={logic.players} />
+                <TagSmall title="공격수/수비수 순위표" />
+                <div className="space20" />
+                <DivisionStrikerRankTable strikers={logic.strikers} teamName={logic.team.name} />
+                <div className="space20" />
+                <TagSmall title="골리 순위표" />
+                <div className="space20" />
+                <DivisionGoalieRankTable golies={logic.strikers} teamName={logic.team.name} />
               </div>
             </div>
-            <div className="space20" />
           </>
         )}
         {/* {tabMenu === 'tournament' && (

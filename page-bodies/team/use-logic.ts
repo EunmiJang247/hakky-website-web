@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Player from '../../data-types/player';
 import Team from '../../data-types/team';
-import TeamScore, { PlayerScoreEach, PlayerScoreResult, TeamScoreEach } from '../../data-types/team-score';
+import TeamScore, { PlayerScoreEach, TeamScoreEach } from '../../data-types/team-score';
 import useReadTeam from '../../services/team/read';
 import useReadTeamPlayers from '../../services/team/read-team-players';
 import useReadTeamScoreApi from '../../services/team/read-yearly-score';
@@ -15,7 +15,7 @@ type LoadedLogic = {
   status: 'LOADED';
   team: Team;
   teamScore: TeamScore[];
-  players: PlayerScoreResult[] | undefined;
+  strikers: PlayerScoreEach[] | undefined;
 };
 
 type FailedLogic = {
@@ -27,7 +27,7 @@ type Logic = LoadingLogic | LoadedLogic | FailedLogic;
 const useLogic = (): Logic => {
   const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
   const [team, setTeam] = useState<Team>();
-  const [players, setPlayers] = useState<PlayerScoreResult[]>();
+  const [strikers, setStrikers] = useState<PlayerScoreEach[]>();
   const [teamScore, setTeamScore] = useState<TeamScore[]>();
 
   const router = useRouter();
@@ -36,7 +36,7 @@ const useLogic = (): Logic => {
   const readTeamScoreApi = useReadTeamScoreApi();
 
   const mergeArr = (arr: PlayerScoreEach[]) => {
-    const newArr: PlayerScoreResult[] = [];
+    const newArr: any[] = [];
     for (let i = 0; i < arr.length; i += 1) {
       const ar = arr[i];
       const index = newArr.findIndex(newar => newar.playerId === ar.playerId && newar.year === ar.year);
@@ -74,24 +74,31 @@ const useLogic = (): Logic => {
     const finalPlayerResult = teamPlayer.map(t => {
       for (let k = 0; k < notDuplicatePlayerRecords.length; k += 1) {
         if (t.id === notDuplicatePlayerRecords[k].playerId) {
-          console.log(t);
-          notDuplicatePlayerRecords[k].name = t.name;
+          notDuplicatePlayerRecords[k].playerName = t.name;
           notDuplicatePlayerRecords[k].position = t.position;
+          notDuplicatePlayerRecords[k].score = {
+            GP: notDuplicatePlayerRecords[k].GP,
+            G: notDuplicatePlayerRecords[k].G,
+            A: notDuplicatePlayerRecords[k].A,
+            PTS: notDuplicatePlayerRecords[k].PTS,
+          };
           return notDuplicatePlayerRecords[k];
         }
       }
       return {
         playerId: t.id,
         year: '',
-        GP: 0,
-        G: 0,
-        A: 0,
-        PTS: 0,
         name: '',
         position: '',
+        score: {
+          GP: 0,
+          G: 0,
+          A: 0,
+          PTS: 0,
+        },
       };
     });
-    setPlayers(finalPlayerResult);
+    setStrikers(finalPlayerResult);
   };
 
   const init = async () => {
@@ -112,9 +119,9 @@ const useLogic = (): Logic => {
 
   useEffect(() => {
     init();
-  }, []);
+  }, [router]);
 
-  if (teamScore === undefined || team === undefined || players === undefined) {
+  if (teamScore === undefined || team === undefined || strikers === undefined) {
     return {
       status: 'LOADING',
     };
@@ -124,7 +131,7 @@ const useLogic = (): Logic => {
     status: 'LOADED',
     team,
     teamScore,
-    players,
+    strikers,
   };
 };
 
