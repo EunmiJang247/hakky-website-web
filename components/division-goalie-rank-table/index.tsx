@@ -19,22 +19,27 @@ const DivisionGoalieRankTable: React.FC<Props> = ({ golies }) => {
           <th className="w-[10%]">GA</th>
           <th className="w-[10%]">PTS</th>
         </tr>
-        {golies?.map((p, idx: number) => (
-          <tr
-            className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"
-            key={p.playerId}
-          >
-            <td className="w-[10%]">{idx + 1}</td>
-            <td className="w-[15%]">{p.playerName}</td>
-            <td className="w-[15%]">{p.playerTeamName}</td>
-            <td className="w-[10%]">{p.score.GP ?? 0}</td>
-            <td className="w-[10%]">{p.score.GA ?? 0}</td>
-            <td className="w-[10%]">{p.score.SV ?? 0}</td>
-            <td className="w-[10%]">{p.score.SVPercent ?? 0}</td>
-            <td className="w-[10%]">{p.score.GA ?? 0}</td>
-            <td className="w-[10%]">{p.score.PTS ?? 0}</td>
-          </tr>
-        ))}
+        {golies?.map((p, idx: number) => {
+          if (p.position === '골리') {
+            return (
+              <tr
+                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"
+                key={p.playerId}
+              >
+                <td className="w-[10%]">{idx + 1}</td>
+                <td className="w-[15%]">{p.playerName}</td>
+                <td className="w-[15%]">{p.playerTeamName}</td>
+                <td className="w-[10%]">{p.score.GP ?? 0}</td>
+                <td className="w-[10%]">{p.score.GA ?? 0}</td>
+                <td className="w-[10%]">{p.score.SV ?? 0}</td>
+                <td className="w-[10%]">{p.score.SVPercent ?? 0}</td>
+                <td className="w-[10%]">{p.score.GA ?? 0}</td>
+                <td className="w-[10%]">{p.score.PTS ?? 0}</td>
+              </tr>
+            );
+          }
+          return '';
+        })}
       </tbody>
     </table>
   );

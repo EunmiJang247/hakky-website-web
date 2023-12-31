@@ -1,12 +1,12 @@
-import useLogic from '../plan/use-logic';
 import Loading from '../../../components/loading';
 import Failed from '../../../components/failed';
 import MenuBar from '../../../components/menu-bar';
 import Footer from '../../../components/footer';
 import TagSmall from '../../../components/tag-small';
 import DivisionTeamRankTable from '../../../components/division-team-rank-table';
-import DivisionStrikerRankTable from '../../../components/division-striker-rank-table';
 import DivisionGoalieRankTable from '../../../components/division-goalie-rank-table';
+import useLogic from './use-logic';
+import DivisionStrikerRankTable from '../../../components/division-striker-rank-table';
 
 const DivisionScore = () => {
   const logic = useLogic();
@@ -26,20 +26,20 @@ const DivisionScore = () => {
       <div className="right-and-left-padding">
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex flex-col justify-between h-full items-top md:flex-col md:w-full">
-            <TagSmall title="2023 남부리그 DIV. 1 순위표" />
+            <TagSmall title={`${logic.highlightDivision?.name} 팀 순위표`} />
             <div className="space20" />
-            <DivisionTeamRankTable />
+            <DivisionTeamRankTable teams={logic.teams} />
             <div className="space60 sm:space20" />
             <div className="flex gap-5 md:flex-col md:gap-14">
               <div className="w-[580px] md:w-full">
-                <TagSmall title="2023 남부리그 DIV. 1 순위표" />
+                <TagSmall title={`${logic.highlightDivision?.name} 공격수 순위표`} />
                 <div className="space20" />
-                <DivisionStrikerRankTable />
+                <DivisionStrikerRankTable strikers={logic.strikers} />
               </div>
               <div className="flex-1">
-                <TagSmall title="2023 남부리그 DIV. 1 순위표" />
+                <TagSmall title={`${logic.highlightDivision?.name} 골리 순위표`} />
                 <div className="space20" />
-                <DivisionGoalieRankTable />
+                <DivisionGoalieRankTable golies={logic.golies} />
               </div>
             </div>
           </div>

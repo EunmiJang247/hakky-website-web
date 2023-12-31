@@ -10,9 +10,9 @@ import LeagueBar from '../../components/league-bar';
 import DivisionsBtn from '../../components/division-btn';
 import TagSmall from '../../components/tag-small';
 import DivisionTeamRankTable from '../../components/division-team-rank-table';
-import DivisionStrikerRankTable from '../../components/division-striker-rank-table';
 import DivisionGoalieRankTable from '../../components/division-goalie-rank-table';
 import YoutubeModal from '../../modal-bodies/youtube';
+import DivisionStrikerRankTable from '../../components/division-striker-rank-table';
 
 const MainPage = () => {
   const logic = useLogic();

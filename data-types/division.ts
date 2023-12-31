@@ -2,6 +2,7 @@ type PlayerScore = {
   playerId: string;
   playerName: string;
   playerTeamName: string;
+  position: string;
   score: {
     G: number;
     A: number;

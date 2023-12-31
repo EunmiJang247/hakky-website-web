@@ -44,13 +44,14 @@ const Tournament = () => {
               <div className="space20" />
               <MiddleBar
                 setTabName={logic.setTabName}
+                tabName={logic.tabName}
                 homeTeamName={logic.tournamentData.homeTeamName}
                 awayTeamName={logic.tournamentData.awayTeamName}
               />
               <div className="space20" />
               <div className="flex gap-5 md:flex-col">
-                <TournamentStrikerRankTable tournamentData={logic.tournamentData} />
-                <TournamentGoalieRankTable tournamentData={logic.tournamentData} />
+                <TournamentStrikerRankTable tournamentData={logic.tournamentData} tabName={logic.tabName} />
+                <TournamentGoalieRankTable tournamentData={logic.tournamentData} tabName={logic.tabName} />
               </div>
               <div className="space100" />
             </div>

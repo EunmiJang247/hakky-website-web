@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { TeamScore } from '../../data-types/division';
 
 interface Props {
@@ -26,7 +27,9 @@ const DivisionTeamRankTable: React.FC<Props> = ({ teams }) => {
             key={d.teamId}
           >
             <td className="w-12">{idx + 1}</td>
-            <td className="w-1/5 text-left pl-3">{d.teamName}</td>
+            <td className="w-1/5 text-left pl-3">
+              <Link href={`/team/${d.teamId}`}>{d.teamName}</Link>
+            </td>
             <td className="flex-1">{d.score.GP ?? 0}</td>
             <td className="flex-1">{d.score.W ?? 0}</td>
             <td className="flex-1">{d.score.L ?? 0}</td>

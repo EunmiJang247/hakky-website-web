@@ -14,7 +14,7 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen, menu }) 
     <>
       {sideNavOpen && <div className="backdrop" onClick={() => setSideNavOpen(false)} />}
       <div className="mb-menu-wrapper" style={sideNavOpen ? { right: '0' } : { right: '-318px' }}>
-        <div className="flex justify-between items-center h-15">
+        {/* <div className="flex justify-between items-center h-15">
           <img src="/logo.png" alt="logo" width={106} height={24} className={styles.logo} />
           <button onClick={() => setSideNavOpen(false)} type="button">
             <img src="/close.png" />
@@ -26,7 +26,7 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen, menu }) 
               {m.name}
             </Link>
           ))}
-        </div>
+        </div> */}
       </div>
     </>
   );

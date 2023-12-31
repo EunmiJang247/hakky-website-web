@@ -3,9 +3,10 @@ import Tournament from '../../data-types/tournament';
 
 interface Props {
   tournamentData: Tournament;
+  tabName: string;
 }
 
-const TournamentStrikerRankTable: React.FC<Props> = ({ tournamentData }) => {
+const TournamentStrikerRankTable: React.FC<Props> = ({ tournamentData, tabName }) => {
   return (
     <table className="w-full">
       <tbody className="bg-black">
@@ -18,22 +19,40 @@ const TournamentStrikerRankTable: React.FC<Props> = ({ tournamentData }) => {
           <th className="flex-1">A1</th>
           <th className="flex-1">A2</th>
         </tr>
-        {tournamentData.optionsGoalsHome.map((d, idx) => (
-          <tr
-            className="font1624500white flex justify-between py-4 border-b border-dark-gray sm:font12500white"
-            key={d.time}
-          >
-            <td className="w-12">{idx + 1}</td>
-            <td className="w-1/5 text-left pl-3">
-              {d.goalPlayerName ? d.goalPlayerName : d.a1PlayerName ? d.a1PlayerName : d.a2PlayerName}
-            </td>
-            <th className="w-1/5 text-left pl-3">{d.time}</th>
-            <td className="flex-1">{d.p}</td>
-            <td className="flex-1">{d.goal ? '1' : 0}</td>
-            <td className="flex-1">{d.a1 ? '1' : 0}</td>
-            <td className="flex-1">{d.a2 ? '1' : 0}</td>
-          </tr>
-        ))}
+        {tabName === 'home' &&
+          tournamentData.optionsGoalsHome.map((d, idx) => (
+            <tr
+              className="font1624500white flex justify-between py-4 border-b border-dark-gray sm:font12500white"
+              key={d.time}
+            >
+              <td className="w-12">{idx + 1}</td>
+              <td className="w-1/5 text-left pl-3">
+                {d.goalPlayerName ? d.goalPlayerName : d.a1PlayerName ? d.a1PlayerName : d.a2PlayerName}
+              </td>
+              <th className="w-1/5 text-left pl-3">{d.time}</th>
+              <td className="flex-1">{d.p}</td>
+              <td className="flex-1">{d.goal ? '1' : 0}</td>
+              <td className="flex-1">{d.a1 ? '1' : 0}</td>
+              <td className="flex-1">{d.a2 ? '1' : 0}</td>
+            </tr>
+          ))}
+        {tabName === 'away' &&
+          tournamentData.optionsGoalsAway.map((d, idx) => (
+            <tr
+              className="font1624500white flex justify-between py-4 border-b border-dark-gray sm:font12500white"
+              key={d.time}
+            >
+              <td className="w-12">{idx + 1}</td>
+              <td className="w-1/5 text-left pl-3">
+                {d.goalPlayerName ? d.goalPlayerName : d.a1PlayerName ? d.a1PlayerName : d.a2PlayerName}
+              </td>
+              <th className="w-1/5 text-left pl-3">{d.time}</th>
+              <td className="flex-1">{d.p}</td>
+              <td className="flex-1">{d.goal ? '1' : 0}</td>
+              <td className="flex-1">{d.a1 ? '1' : 0}</td>
+              <td className="flex-1">{d.a2 ? '1' : 0}</td>
+            </tr>
+          ))}
       </tbody>
     </table>
   );

@@ -64,12 +64,12 @@ const useLogic = (): Logic => {
   const init = async () => {
     try {
       const tournamentsFromServer = await readTournamentApi({ startDate, endDate });
-      const youtubeFromServe = await readYoutubes({ limit: 6, skip: 0 });
       setTournaments(tournamentsFromServer);
-      setYoutubes(youtubeFromServe.result);
       if (menuLis !== undefined) {
         setHighlightLeague(menuLis[0]);
       }
+      const youtubeFromServe = await readYoutubes({ limit: 6, skip: 0 });
+      setYoutubes(youtubeFromServe.result);
     } catch (error) {
       setErrorMessage('로딩하는 도중 에러가 발생했습니다');
       console.error(error);
@@ -123,22 +123,14 @@ const useLogic = (): Logic => {
   }, [highlightLeague]);
 
   useEffect(() => {
-    if (router.isReady) {
-      const { division, tournament } = router.query;
-      if (division === undefined || tournament === undefined) {
-        init();
-      }
+    init();
+  }, []);
 
-      if (typeof division === 'object' || tournament === 'object') {
-        alert('잘못된 접근입니다');
-        router.back();
-      }
-
-      if (typeof division === 'string' && tournament === 'string') {
-        init();
-      }
-    }
-  }, [router.isReady, currentDate, menuLis]);
+  if (tournaments === undefined) {
+    return {
+      status: 'LOADING',
+    };
+  }
 
   return {
     status: 'LOADED',

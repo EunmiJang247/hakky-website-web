@@ -37,6 +37,11 @@ const Footer = () => {
       <div className="w-full flex justify-center items-center h-11 bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end font20700white">
         HOCKEY TV
       </div>
+      <div className="w-full flex justify-center items-center h-11 bg-black underline font1620500darkgray">
+        <Link href="https://accesshomepage.com" className="font-light">
+          Made By 여의도개발자들
+        </Link>
+      </div>
     </>
   );
 };
