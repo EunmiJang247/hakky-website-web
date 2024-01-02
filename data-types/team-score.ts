@@ -12,6 +12,7 @@ type PlayerScoreResult = {
 };
 
 type PlayerScoreEach = {
+  year: any;
   playerId: Id;
   playerName?: string;
   position?: string;
@@ -29,6 +30,8 @@ type PlayerScoreEach = {
     GA?: number;
     SV: number;
     SVPercent: number;
+    SA?: number;
+    PIM?: number;
   };
 };
 

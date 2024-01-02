@@ -6,7 +6,6 @@ interface Props {
 }
 
 const TeamPlayerTable: React.FC<Props> = ({ players }) => {
-  console.log(players);
   return (
     <table className="w-full">
       <tbody className="bg-black">

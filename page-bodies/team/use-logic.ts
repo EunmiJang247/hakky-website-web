@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Player from '../../data-types/player';
 import Team from '../../data-types/team';
-import TeamScore, { PlayerScoreEach, TeamScoreEach } from '../../data-types/team-score';
+import TeamScore, { PlayerScoreEach } from '../../data-types/team-score';
 import useReadTeam from '../../services/team/read';
 import useReadTeamPlayers from '../../services/team/read-team-players';
 import useReadTeamScoreApi from '../../services/team/read-yearly-score';

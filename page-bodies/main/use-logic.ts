@@ -127,7 +127,7 @@ const useLogic = (): Logic => {
 
   useEffect(() => {
     init();
-  }, []);
+  }, [currentDate]);
 
   if (tournaments === undefined) {
     return {

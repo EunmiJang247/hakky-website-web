@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { PlayerScore } from '../../data-types/division';
 import { PlayerScoreEach } from '../../data-types/team-score';
 
@@ -15,11 +16,10 @@ const DivisionGoalieRankTable: React.FC<Props> = ({ golies, teamName }) => {
           <th className="w-[15%]">선수</th>
           <th className="w-[15%]">팀</th>
           <th className="w-[10%]">GP</th>
+          <th className="w-[10%]">SA</th>
           <th className="w-[10%]">GA</th>
           <th className="w-[10%]">SV</th>
           <th className="w-[10%]">SV%</th>
-          <th className="w-[10%]">GA</th>
-          <th className="w-[10%]">PTS</th>
         </tr>
         {golies?.map((p, idx: number) => {
           if (p.position === '골리') {
@@ -29,14 +29,15 @@ const DivisionGoalieRankTable: React.FC<Props> = ({ golies, teamName }) => {
                 key={p.playerId}
               >
                 <td className="w-[10%]">{idx + 1}</td>
-                <td className="w-[15%]">{p.playerName}</td>
+                <td className="w-[15%]">
+                  <Link href={`/player/${p.playerId}`}>{p.playerName}</Link>
+                </td>
                 <td className="w-[15%]">{p.playerTeamName ? p.playerTeamName : teamName}</td>
                 <td className="w-[10%]">{p.score.GP ?? 0}</td>
+                <td className="w-[10%]">{p.score.SA ?? 0}</td>
                 <td className="w-[10%]">{p.score.GA ?? 0}</td>
                 <td className="w-[10%]">{p.score.SV ?? 0}</td>
-                <td className="w-[10%]">{p.score.SVPercent ?? 0}</td>
-                <td className="w-[10%]">{p.score.GA ?? 0}</td>
-                <td className="w-[10%]">{p.score.PTS ?? 0}</td>
+                <td className="w-[10%]">{p.score.SVPercent.toFixed(2) ?? 0}%</td>
               </tr>
             );
           }

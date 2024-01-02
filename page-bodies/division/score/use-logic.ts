@@ -59,7 +59,6 @@ const useLogic = (): Logic => {
           return 0;
         });
         setGolies(strikerListByRank);
-        console.log(divisionFromServer);
       }
     } catch (error) {
       setErrorMessage('로딩하는 도중 에러가 발생했습니다');

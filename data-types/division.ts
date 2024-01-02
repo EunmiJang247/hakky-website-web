@@ -12,6 +12,8 @@ type PlayerScore = {
     SV: number;
     SVPercent: number;
     PTS: number;
+    SA?: number;
+    PIM?: number;
   };
 };
 
@@ -19,6 +21,7 @@ type TeamScore = {
   teamId: string;
   teamName: string;
   score: {
+    GD: number;
     GP: number;
     W: number;
     L: number;

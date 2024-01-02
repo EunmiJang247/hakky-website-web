@@ -19,6 +19,7 @@ const DivisionTeamRankTable: React.FC<Props> = ({ teams }) => {
           <th className="flex-1">OTL</th>
           <th className="flex-1">GF</th>
           <th className="flex-1">GA</th>
+          <th className="flex-1">GD</th>
           <th className="flex-1">PTS</th>
         </tr>
         {teams?.map((d, idx: number) => (
@@ -37,6 +38,7 @@ const DivisionTeamRankTable: React.FC<Props> = ({ teams }) => {
             <td className="flex-1">{d.score.OTL ?? 0}</td>
             <td className="flex-1">{d.score.GF ?? 0}</td>
             <td className="flex-1">{d.score.GA ?? 0}</td>
+            <td className="flex-1">{d.score.GD ?? 0}</td>
             <td className="flex-1">{d.score.PTS ?? 0}</td>
           </tr>
         ))}
