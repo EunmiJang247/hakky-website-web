@@ -26,7 +26,7 @@ const DivisionScores = () => {
       <div className="right-and-left-padding">
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex flex-col justify-between h-full items-top md:flex-col md:w-full">
-            <TagSmall title="League Division 일정" />
+            {/* <TagSmall title="League Division 일정" />
             <div className="space20" />
             <TagLarge title="2023 남부리그" />
             <div className="space40" />
@@ -46,7 +46,7 @@ const DivisionScores = () => {
             <div className="space40 sm:space20" />
             <TagSmall title="디비전1" />
             <div className="space20" />
-            <DivisionTeamRankTable />
+            <DivisionTeamRankTable /> */}
           </div>
         </div>
       </div>
