@@ -23,7 +23,7 @@ const PlayerDetailPage = () => {
     <div className="bg-gradient bg-no-repeat bg-cover min-h-screen flex flex-col overflow-hidden">
       <MenuBar />
       <div className="right-and-left-padding">
-        <div className="space100" />
+        <div className="space100 md:space80 sm:space60" />
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px]">
             <PlayerDetailTable player={logic.player} />

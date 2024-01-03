@@ -46,6 +46,7 @@ const useLogic = (): Logic => {
         const divisionFromServer = await readTournament({ id: id.toString() });
         const homeScore = giveMeTeamResult(divisionFromServer.optionsGoalsHome);
         const awayScore = giveMeTeamResult(divisionFromServer.optionsGoalsAway);
+        console.log(tournamentData);
         setTournamentData(divisionFromServer);
         setoptionsGoalsHome({ homeTeamName: divisionFromServer.homeTeamName, homeScore });
         setoptionsGoalsAway({ awayTeamName: divisionFromServer.awayTeamName, awayScore });

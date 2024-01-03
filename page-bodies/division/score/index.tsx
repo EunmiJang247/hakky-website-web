@@ -6,7 +6,7 @@ import TagSmall from '../../../components/tag-small';
 import DivisionTeamRankTable from '../../../components/division-team-rank-table';
 import DivisionGoalieRankTable from '../../../components/division-goalie-rank-table';
 import useLogic from './use-logic';
-import DivisionStrikerRankTable from '../../../components/division-striker-rank-table-one-player';
+import DivisionStrikerRankTable from '../../../components/division-striker-rank-table';
 
 const DivisionScore = () => {
   const logic = useLogic();

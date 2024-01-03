@@ -100,6 +100,7 @@ const useLogic = (): Logic => {
         setPlayer(playerFromServer);
         const playerScoreFromServer = await readPlayerScoreApi({ id: router.query.id });
         const result = showPlayerScoreYearly(playerFromServer, playerScoreFromServer);
+        console.log(result);
         setPlayerScore(result);
       }
     } catch (error) {

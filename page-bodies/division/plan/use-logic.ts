@@ -40,8 +40,8 @@ const useLogic = (): Logic => {
         result.sort(function compare(a: Tournament, b: Tournament) {
           const before = a.tournamentDate ?? 0;
           const after = b.tournamentDate ?? 0;
-          if (before > after) return -1;
-          if (before < after) return 1;
+          if (before < after) return -1;
+          if (before > after) return 1;
           return 0;
         });
         setData(result);

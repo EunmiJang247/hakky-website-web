@@ -21,19 +21,17 @@ const DivisionStrikerRankTableOnePlayer: React.FC<Props> = ({ striker }) => {
           <th className="w-[13%]">P</th>
           <th className="w-[13%]">PIM</th>
         </tr>
-        {striker?.position === '공격수' && (
-          <tr className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1">
-            <td className="w-[10%]">{striker.year}</td>
-            <td className="w-[20%]">
-              <Link href={`/player/${striker.playerId}`}>{striker.playerName}</Link>
-            </td>
-            <td className="w-[13%]">{striker.score.GP ?? 0}</td>
-            <td className="w-[13%]">{striker.score.G ?? 0}</td>
-            <td className="w-[13%]">{striker.score.A ?? 0}</td>
-            <td className="w-[13%]">{striker.score.PTS ?? 0}</td>
-            <td className="w-[13%]">{striker.score.PIM ?? 0}</td>
-          </tr>
-        )}
+        <tr className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1">
+          <td className="w-[10%]">{striker?.year}</td>
+          <td className="w-[20%]">
+            <Link href={`/player/${striker?.playerId}`}>{striker?.playerName}</Link>
+          </td>
+          <td className="w-[13%]">{striker?.score.GP ?? 0}</td>
+          <td className="w-[13%]">{striker?.score.G ?? 0}</td>
+          <td className="w-[13%]">{striker?.score.A ?? 0}</td>
+          <td className="w-[13%]">{striker?.score.PTS ?? 0}</td>
+          <td className="w-[13%]">{striker?.score.PIM ?? 0}</td>
+        </tr>
       </tbody>
     </table>
   );
