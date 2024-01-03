@@ -18,6 +18,8 @@ type PlayerScoreEach = {
   position?: string;
   playerTeamName?: string;
   score: {
+    TOI: any;
+    P: any;
     G?: number;
     A?: number;
     PTS?: number;
@@ -57,7 +59,7 @@ interface TeamScore {
   leagueYear: string;
   name: string;
   playerScore: PlayerScoreEach[];
-  teamScore: TeamScoreEach[];
+  teamScore: TeamScoreEach;
 }
 
 export type { PlayerScoreEach, TeamScoreEach, PlayerScoreResult };

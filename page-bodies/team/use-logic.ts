@@ -44,29 +44,46 @@ const useLogic = (): Logic => {
         newArr.push({
           playerId: ar.playerId,
           year: ar.year,
-          GP: ar.score.GP,
-          G: ar.score.G,
-          A: ar.score.A,
-          PTS: ar.score.PTS,
+          score: {
+            GP: ar.score.GP,
+            GA: ar.score.GA,
+            G: ar.score.G,
+            P: ar.score.P,
+            A: ar.score.A,
+            SA: ar.score.SA,
+            SV: ar.score.SV,
+            SVPercent: ar.score.SVPercent,
+            PTS: ar.score.PTS,
+            PIM: ar.score.PIM,
+            TOI: ar.score.TOI,
+          },
         });
       } else {
-        newArr[index].GP += ar.score.GP;
-        newArr[index].G += ar.score.G;
-        newArr[index].A += ar.score.A;
-        newArr[index].PTS += ar.score.PTS;
+        newArr[index].score.GP += ar.score.GP;
+        newArr[index].score.G += ar.score.G;
+        newArr[index].score.A += ar.score.A;
+        newArr[index].score.PTS += ar.score.PTS;
+        newArr[index].score.PIM += ar.score.PIM;
+        newArr[index].score.P += ar.score.P;
+        newArr[index].score.GA += ar.score.GA;
+        newArr[index].score.SA += ar.score.SA;
+        newArr[index].score.SV += ar.score.SV;
+        newArr[index].score.TOI += ar.score.TOI;
+        newArr[index].score.SVPercent = Math.floor((1 - newArr[index].score.GA / newArr[index].score.SA) * 100);
       }
     }
     return newArr;
   };
 
   const showPlayerScoreYearly = (teamPlayer: Player[], yearlyTeamScroreFromServer: TeamScore[]) => {
+    // teamPlayer : 팀에 속하는 선수 전체. yearlyTeamScroreFromServer: 리그별 선수의 점수들.
     const arr: PlayerScoreEach[] = [];
     yearlyTeamScroreFromServer?.map(score => {
       const scores = score?.playerScore;
       for (let i = 0; i < scores.length; i += 1) {
         const singleScore = scores[i];
         singleScore.year = score.leagueYear;
-        arr.push(scores[i]); // 이 팀이 참석한 divisions중 발생할 골 모두의 array와 년도
+        arr.push(scores[i]); // division의 playerScore을 돌면서 년도를 주입한다.
       }
       return arr;
     });
@@ -76,27 +93,10 @@ const useLogic = (): Logic => {
         if (t.id === notDuplicatePlayerRecords[k].playerId) {
           notDuplicatePlayerRecords[k].playerName = t.name;
           notDuplicatePlayerRecords[k].position = t.position;
-          notDuplicatePlayerRecords[k].score = {
-            GP: notDuplicatePlayerRecords[k].GP,
-            G: notDuplicatePlayerRecords[k].G,
-            A: notDuplicatePlayerRecords[k].A,
-            PTS: notDuplicatePlayerRecords[k].PTS,
-          };
           return notDuplicatePlayerRecords[k];
         }
       }
-      return {
-        playerId: t.id,
-        year: '',
-        name: '',
-        position: '',
-        score: {
-          GP: 0,
-          G: 0,
-          A: 0,
-          PTS: 0,
-        },
-      };
+      return '';
     });
     setStrikers(finalPlayerResult);
   };

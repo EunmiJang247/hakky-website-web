@@ -37,7 +37,7 @@ const DivisionGoalieRankTable: React.FC<Props> = ({ golies, teamName }) => {
                 <td className="w-[10%]">{p.score.SA ?? 0}</td>
                 <td className="w-[10%]">{p.score.GA ?? 0}</td>
                 <td className="w-[10%]">{p.score.SV ?? 0}</td>
-                <td className="w-[10%]">{p.score.SVPercent.toFixed(2) ?? 0}%</td>
+                <td className="w-[10%]">{p.score.SVPercent ? p.score.SVPercent.toFixed(2) : 0}%</td>
               </tr>
             );
           }

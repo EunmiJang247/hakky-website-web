@@ -21,7 +21,9 @@ const TournamentPlan: React.FC<Props> = ({ data }) => {
                 </p>
                 <div className="flex gap-5 items-center sm:gap-1">
                   <div className="flex gap-1.5 font16700white sm:font12700white items-center">
-                    <p>{d.homeTeamName}</p>
+                    <Link href={`/team/${d.homeTeamId}`}>
+                      <p>{d.homeTeamName}</p>
+                    </Link>
                     <img src={d.homeTeamLogo.tempUrl} alt="logo" className="w-5 h-5" />
                   </div>
                   <div className="bg-dark-gray py-3 px-5 md:py-2 md:px-5 sm:py-1 sm:px-2 font1620700lightgray sm:font14700lightgray">
@@ -35,7 +37,9 @@ const TournamentPlan: React.FC<Props> = ({ data }) => {
                   </div>
                   <div className="flex gap-1.5 font16700white sm:font12700white">
                     <img src={d.awayTeamLogo.tempUrl} alt="logo" className="w-5 h-5" />
-                    <p>{d.awayTeamName}</p>
+                    <Link href={`/team/${d.awayTeamId}`}>
+                      <p>{d.awayTeamName}</p>
+                    </Link>
                   </div>
                 </div>
                 <Link

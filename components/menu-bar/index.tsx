@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useContext, useState } from 'react';
 import MenuContext from '../../contexts/menus';
+import RightSlideMenu from '../menu-right-slide';
 
 const MenuBar: React.FC = () => {
   const menuLis = useContext(MenuContext);
@@ -78,7 +79,7 @@ const MenuBar: React.FC = () => {
           <button onClick={() => setSideNavOpen(true)} type="button">
             <img src="/hamburger.png" className="cursor-pointer" />
           </button>
-          {/* <RightSlideMenu sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} menu={menu} /> */}
+          <RightSlideMenu sideNavOpen={sideNavOpen} setSideNavOpen={setSideNavOpen} />
         </div>
       </div>
     </div>

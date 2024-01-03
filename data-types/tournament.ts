@@ -17,6 +17,8 @@ type OptionsGoal = {
 };
 
 interface Tournament {
+  awayTeamId: any;
+  homeTeamId: any;
   year: string;
   id: Id;
   yaer: string;

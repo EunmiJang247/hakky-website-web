@@ -1,16 +1,17 @@
 import Link from 'next/link';
-import TeamScore from '../../data-types/team-score';
+import TeamScore, { TeamScoreEach } from '../../data-types/team-score';
 
 interface Props {
   teamScore: TeamScore[];
 }
 
 const YearlyTeamRankTable: React.FC<Props> = ({ teamScore }) => {
+  console.log(teamScore, '??');
   return (
     <table className="w-full">
       <tbody className="bg-black">
         <tr className="font16500blue sm:font12500blue flex justify-between py-5 border-b border-dark-gray sm:py-1">
-          <th className="w-12">년도</th>
+          <th className="w-12">년dd도</th>
           <th className="w-1/5 text-left pl-3">리그</th>
           <th className="flex-1">GP</th>
           <th className="flex-1">W</th>

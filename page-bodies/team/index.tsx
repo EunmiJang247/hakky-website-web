@@ -21,6 +21,7 @@ const TeamDetail = () => {
   if (logic.status === 'FAILED') {
     return <Failed logic={logic} />;
   }
+  console.log(logic.teamScore);
 
   return (
     <div className="bg-gradient bg-no-repeat bg-cover min-h-screen flex flex-col overflow-hidden">
@@ -53,7 +54,7 @@ const TeamDetail = () => {
             >
               선수
             </button>
-            <button
+            {/* <button
               className={
                 tabMenu === 'tournament'
                   ? 'py-5 px-7 text-white cursor-pointer border-b-4 border-b-main-blue'
@@ -63,7 +64,7 @@ const TeamDetail = () => {
               onClick={() => setTabMenu('tournament')}
             >
               경기
-            </button>
+            </button> */}
           </div>
         </div>
         {tabMenu === 'player' && (

@@ -10,6 +10,7 @@ import {
   addDays,
   differenceInCalendarDays,
 } from 'date-fns';
+import Link from 'next/link';
 import TagLarge from '../tag-large';
 import { LoadedLogic } from '../../page-bodies/main/use-logic';
 
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const Calendar: React.FC<Props> = ({ logic }) => {
+  const [mobileTournamentName, setMobileTournamentName] = useState<string>('');
   const [currentDate, setCurrentDate] = useState(new Date());
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(currentDate);
@@ -97,7 +99,7 @@ const Calendar: React.FC<Props> = ({ logic }) => {
                 {format(v, 'd')}
               </span>
 
-              <div className="mt-8 p-1 px-2">
+              <div className="mt-8 p-1 px-2 sm:mt-0">
                 {logic.tournaments.map(t => {
                   const tournamentMonth = new Date(t.tournamentDate).getMonth();
                   const tournamentDate = new Date(t.tournamentDate).getDate();
@@ -105,12 +107,24 @@ const Calendar: React.FC<Props> = ({ logic }) => {
                   const nowDate = v.getDate();
                   if (tournamentMonth === nowMonth && tournamentDate === nowDate) {
                     return (
-                      <p
-                        className="text-white bg-dark-gray rounded py-1 px-2 cursor-pointer font12400gray truncate"
-                        key={t.id}
-                      >
-                        {t.homeTeamName} vs {t.awayTeamName}
-                      </p>
+                      <>
+                        <p
+                          className="text-white bg-dark-gray rounded py-1 px-2 cursor-pointer font12400gray truncate sm:hidden"
+                          key={t.id}
+                        >
+                          <Link href={`/tournament/${t.id}`}>
+                            {t.homeTeamName} vs {t.awayTeamName}
+                          </Link>
+                        </p>
+                        <button
+                          className="hidden sm:block flex justify-center cursor-pointer"
+                          onClick={() => setMobileTournamentName(`${t.homeTeamName} vs ${t.awayTeamName}`)}
+                        >
+                          <span className="text-[#E20B30] text-xs relative top-3">
+                            <img src="/dot.png" alt="dot" className="w-2" />
+                          </span>
+                        </button>
+                      </>
                     );
                   }
                   return '';
@@ -119,6 +133,8 @@ const Calendar: React.FC<Props> = ({ logic }) => {
             </div>
           );
         })}
+
+        <div className="text-white hidden sm:block p-3 text-xs">{mobileTournamentName}</div>
       </div>
     </div>
   );
