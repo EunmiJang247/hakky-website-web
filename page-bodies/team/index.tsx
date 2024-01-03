@@ -7,8 +7,9 @@ import TeamDetailTable from '../../components/team-detail';
 import Footer from '../../components/footer';
 import YearlyTeamRankTable from '../../components/yearly-team-rank-table';
 import DivisionGoalieRankTable from '../../components/division-goalie-rank-table';
-import DivisionStrikerRankTable from '../../components/division-striker-rank-table';
 import TagSmall from '../../components/tag-small';
+import SelectBox from '../../components/select-box';
+import DivisionStrikerRankTable from '../../components/division-striker-rank-table';
 
 const TeamDetail = () => {
   const [tabMenu, setTabMenu] = useState<string>('player');
@@ -21,7 +22,6 @@ const TeamDetail = () => {
   if (logic.status === 'FAILED') {
     return <Failed logic={logic} />;
   }
-  console.log(logic.teamScore);
 
   return (
     <div className="bg-gradient bg-no-repeat bg-cover min-h-screen flex flex-col overflow-hidden">
@@ -73,13 +73,23 @@ const TeamDetail = () => {
             <div className="space20" />
             <div className="w-full flex justify-center items-center">
               <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
+                <SelectBox currentYear={logic.currentYear} setCurrentYear={logic.setCurrentYear} />
+                <div className="space20" />
                 <TagSmall title="공격수/수비수 순위표" />
                 <div className="space20" />
-                <DivisionStrikerRankTable strikers={logic.strikers} teamName={logic.team.name} />
+                <DivisionStrikerRankTable
+                  strikers={logic.strikers}
+                  teamName={logic.team.name}
+                  currentYear={logic.currentYear}
+                />
                 <div className="space20" />
                 <TagSmall title="골리 순위표" />
                 <div className="space20" />
-                <DivisionGoalieRankTable golies={logic.strikers} teamName={logic.team.name} />
+                <DivisionGoalieRankTable
+                  golies={logic.strikers}
+                  teamName={logic.team.name}
+                  currentYear={logic.currentYear}
+                />
               </div>
             </div>
           </>

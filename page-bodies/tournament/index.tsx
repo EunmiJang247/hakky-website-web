@@ -6,6 +6,7 @@ import MenuBar from '../../components/menu-bar';
 import MiddleBar from '../../components/middle-bar';
 import TagSmall from '../../components/tag-small';
 import TournamentGoalieRankTable from '../../components/tournament-goalie-rank-table';
+import TournamentPenaltyRankTable from '../../components/tournament-penalty-rank-table';
 import TournamentScoreDetail from '../../components/tournament-score-detail';
 import TournamentScoreDetailReady from '../../components/tournament-score-detail-ready';
 import TournamentStrikerRankTable from '../../components/tournament-striker-rank-table';
@@ -40,6 +41,7 @@ const Tournament = () => {
               <TournamentTeamScore
                 optionsGoalsHome={logic.optionsGoalsHome}
                 optionsGoalsAway={logic.optionsGoalsAway}
+                tournamentData={logic.tournamentData}
               />
               <div className="space20" />
               <MiddleBar
@@ -49,9 +51,12 @@ const Tournament = () => {
                 awayTeamName={logic.tournamentData.awayTeamName}
               />
               <div className="space20" />
-              <div className="flex gap-5 md:flex-col">
+              <div className="grid grid-cols-2 gap-5">
                 <TournamentStrikerRankTable tournamentData={logic.tournamentData} tabName={logic.tabName} />
-                <TournamentGoalieRankTable tournamentData={logic.tournamentData} tabName={logic.tabName} />
+                <div className="grid grid-rows-2 gap-5">
+                  <TournamentPenaltyRankTable tournamentData={logic.tournamentData} tabName={logic.tabName} />
+                  <TournamentGoalieRankTable tournamentData={logic.tournamentData} tabName={logic.tabName} />
+                </div>
               </div>
               <div className="space100" />
             </div>

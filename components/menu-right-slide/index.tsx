@@ -2,8 +2,6 @@ import { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import MenuContext from '../../contexts/menus';
-import Menu from '../../data-types/menu';
-import styles from './index.module.scss';
 
 interface Props {
   sideNavOpen: boolean;
@@ -12,7 +10,6 @@ interface Props {
 
 const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
   const menuLis = useContext(MenuContext);
-  const router = useRouter();
 
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [activeSubMenu, setActiveSubMenu] = useState<string | null>(null);
@@ -32,7 +29,7 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
       {sideNavOpen && <div className="modal-wrap" onClick={() => setSideNavOpen(false)} />}
       <div className="mb-menu-wrapper bg-black" style={sideNavOpen ? { right: '0' } : { right: '-318px' }}>
         <div className="flex justify-between items-center h-15">
-          <img src="/logo.png" alt="logo" width={106} height={24} className={styles.logo} />
+          <img src="/logo.png" alt="logo" width={106} height={24} />
           <button onClick={() => setSideNavOpen(false)} type="button">
             <img src="/hamburger.png" />
           </button>
@@ -42,7 +39,9 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
             <div key={m.id}>
               <button
                 onClick={() => handleMenuClick(m.id)}
-                className={`text-white p-5 border-solid border-b bottom-0.5 ${openMenu === m.id ? 'bg-gray-800' : ''}`}
+                className={`w-full text-white p-5 border-solid border-b border-b-main-blue ${
+                  openMenu === m.id ? 'bg-gray-800' : ''
+                }`}
               >
                 {m.name}
               </button>
@@ -51,7 +50,7 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
                   <div key={d.divisionId}>
                     <button
                       onClick={() => handleSubMenuClick(d.divisionId)}
-                      className={`text-white p-5 border-solid border-b bottom-0.5 ${
+                      className={`w-full text-white p-5 border-solid border-b bottom-0.5 ${
                         activeSubMenu === d.divisionId ? 'bg-gray-800' : ''
                       }`}
                     >
@@ -59,21 +58,20 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
                     </button>
                     {activeSubMenu === d.divisionId && (
                       <div className="ml-4">
-                        {/* 여기에 스코어, 일정 메뉴 추가 */}
-                        <Link href="/score">
+                        <Link href={`/division/plan/${d.divisionId}`}>
                           <button
                             onClick={() => setSideNavOpen(false)}
-                            className="text-white p-3 block hover:bg-gray-800"
-                          >
-                            스코어
-                          </button>
-                        </Link>
-                        <Link href="/schedule">
-                          <button
-                            onClick={() => setSideNavOpen(false)}
-                            className="text-white p-3 block hover:bg-gray-800"
+                            className="text-white p-3 block hover:bg-gray-800 w-full"
                           >
                             일정
+                          </button>
+                        </Link>
+                        <Link href={`/division/score/${d.divisionId}`}>
+                          <button
+                            onClick={() => setSideNavOpen(false)}
+                            className="text-white p-3 block hover:bg-gray-800 w-full"
+                          >
+                            스코어
                           </button>
                         </Link>
                       </div>

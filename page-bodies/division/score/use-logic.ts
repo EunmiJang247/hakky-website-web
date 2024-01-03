@@ -70,7 +70,7 @@ const useLogic = (): Logic => {
     if (router.isReady) {
       init();
     }
-  }, [router.isReady]);
+  }, [router]);
 
   if (highlightDivision === undefined) {
     return {

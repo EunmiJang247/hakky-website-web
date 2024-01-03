@@ -16,6 +16,8 @@ type LoadedLogic = {
   team: Team;
   teamScore: TeamScore[];
   strikers: PlayerScoreEach[] | undefined;
+  currentYear: number;
+  setCurrentYear: (value: number) => void;
 };
 
 type FailedLogic = {
@@ -29,6 +31,7 @@ const useLogic = (): Logic => {
   const [team, setTeam] = useState<Team>();
   const [strikers, setStrikers] = useState<PlayerScoreEach[]>();
   const [teamScore, setTeamScore] = useState<TeamScore[]>();
+  const [currentYear, setCurrentYear] = useState<number>(2023);
 
   const router = useRouter();
   const readTeamApi = useReadTeam();
@@ -98,6 +101,20 @@ const useLogic = (): Logic => {
       }
       return '';
     });
+    finalPlayerResult.sort(function compare(a: PlayerScoreEach, b: PlayerScoreEach) {
+      const beforePTS = a.score.PTS ?? 0;
+      const afterPTS = b.score.PTS ?? 0;
+      if (beforePTS > afterPTS) return -1;
+      if (beforePTS < afterPTS) return 1;
+
+      // PTS가 같으면 SVPercent로 정렬
+      const beforeSVPercent = a.score.SVPercent ?? 0;
+      const afterSVPercent = b.score.SVPercent ?? 0;
+      if (beforeSVPercent > afterSVPercent) return -1;
+      if (beforeSVPercent < afterSVPercent) return 1;
+
+      return 0;
+    });
     setStrikers(finalPlayerResult);
   };
 
@@ -132,6 +149,8 @@ const useLogic = (): Logic => {
     team,
     teamScore,
     strikers,
+    currentYear,
+    setCurrentYear,
   };
 };
 

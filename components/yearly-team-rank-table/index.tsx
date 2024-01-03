@@ -1,12 +1,10 @@
-import Link from 'next/link';
-import TeamScore, { TeamScoreEach } from '../../data-types/team-score';
+import TeamScore from '../../data-types/team-score';
 
 interface Props {
   teamScore: TeamScore[];
 }
 
 const YearlyTeamRankTable: React.FC<Props> = ({ teamScore }) => {
-  console.log(teamScore, '??');
   return (
     <table className="w-full">
       <tbody className="bg-black">

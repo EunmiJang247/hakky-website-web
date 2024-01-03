@@ -5,9 +5,10 @@ import { PlayerScoreEach } from '../../data-types/team-score';
 interface Props {
   golies: PlayerScore[] | undefined | PlayerScoreEach[];
   teamName?: string;
+  currentYear?: number;
 }
 
-const DivisionGoalieRankTable: React.FC<Props> = ({ golies, teamName }) => {
+const DivisionGoalieRankTable: React.FC<Props> = ({ golies, teamName, currentYear }) => {
   return (
     <table className="w-full">
       <tbody className="bg-black">
@@ -22,7 +23,26 @@ const DivisionGoalieRankTable: React.FC<Props> = ({ golies, teamName }) => {
           <th className="w-[10%]">SV%</th>
         </tr>
         {golies?.map((p, idx: number) => {
-          if (p.position === '골리') {
+          if (p.position === '골리' && Number(p.year) === currentYear) {
+            return (
+              <tr
+                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"
+                key={p.playerId}
+              >
+                <td className="w-[10%]">{idx + 1}</td>
+                <td className="w-[15%]">
+                  <Link href={`/player/${p.playerId}`}>{p.playerName}</Link>
+                </td>
+                <td className="w-[15%]">{p.playerTeamName ? p.playerTeamName : teamName}</td>
+                <td className="w-[10%]">{p.score.GP ?? 0}</td>
+                <td className="w-[10%]">{p.score.SA ?? 0}</td>
+                <td className="w-[10%]">{p.score.GA ?? 0}</td>
+                <td className="w-[10%]">{p.score.SV ?? 0}</td>
+                <td className="w-[10%]">{p.score.SVPercent ? p.score.SVPercent.toFixed(2) : 0}%</td>
+              </tr>
+            );
+          }
+          if (p.position === '골리' && !currentYear) {
             return (
               <tr
                 className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"

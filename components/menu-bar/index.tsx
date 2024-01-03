@@ -30,14 +30,16 @@ const MenuBar: React.FC = () => {
               onMouseEnter={() => setSubMenuOpen(idx)}
               onMouseLeave={() => setSubMenuOpen(-1)}
             >
-              <Link href={`/division/${m.id}`} className="leading-[100px] pr-12 flex items-center gap-3">
-                <p className="font16700white h-full">{m.name}</p>
+              <div className="leading-[100px] pr-12 flex items-center gap-3">
+                <p className="font16700white h-full cursor-default">{m.name}</p>
                 {m.divisions && <img src="/menubar/arrow.png" />}
-              </Link>
+              </div>
               <div className="font16700white absolute top-[90px] bg-black">
                 {m.divisions && subMenuOpen === idx && (
                   <div className="px-3 py-2.5 hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer relative w-32 flex justify-between items-center">
-                    규정
+                    <Link href={`/regulation/${m.id}`} className="w-full h-full">
+                      규정
+                    </Link>
                   </div>
                 )}
                 {m.divisions &&
@@ -49,7 +51,9 @@ const MenuBar: React.FC = () => {
                       onMouseEnter={() => setSubSubMenuOpen(id)}
                       onMouseLeave={() => setSubSubMenuOpen(-1)}
                     >
-                      <p>{s.divisionName}</p>
+                      <Link href={`/division/plan/${s.divisionId}`}>
+                        <p className="w-full h-full">{s.divisionName}</p>
+                      </Link>
                       <img src="/menubar/arrow.png" className="-rotate-90" />
                       {subSubMenuOpen === id && (
                         <div className="absolute left-full w-full top-0">

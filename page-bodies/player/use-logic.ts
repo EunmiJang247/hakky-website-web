@@ -2,9 +2,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { PlayerScore } from '../../data-types/division';
 import Player from '../../data-types/player';
-import TeamScore, { PlayerScoreEach } from '../../data-types/team-score';
+import { PlayerScoreEach } from '../../data-types/team-score';
+import useReadPlayerScoreApi from '../../services/player/player-score';
 import useReadPlayer from '../../services/player/read';
-import useReadTeamScoreApi from '../../services/team/read-yearly-score';
 
 type LoadingLogic = {
   status: 'LOADING';
@@ -13,7 +13,7 @@ type LoadingLogic = {
 type LoadedLogic = {
   status: 'LOADED';
   player: Player;
-  playerScore: PlayerScoreEach[] | undefined;
+  playerScore: PlayerScoreEach | undefined;
 };
 
 type FailedLogic = {
@@ -24,10 +24,10 @@ type Logic = LoadingLogic | LoadedLogic | FailedLogic;
 
 const useLogic = (): Logic => {
   const readPlayerApi = useReadPlayer();
-  const readTeamScoreApi = useReadTeamScoreApi();
+  const readPlayerScoreApi = useReadPlayerScoreApi();
   const router = useRouter();
   const [player, setPlayer] = useState<Player>();
-  const [playerScore, setPlayerScore] = useState<PlayerScoreEach[]>();
+  const [playerScore, setPlayerScore] = useState<PlayerScoreEach>();
   const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
 
   const mergeArr = (arr: PlayerScoreEach[]) => {
@@ -39,24 +39,40 @@ const useLogic = (): Logic => {
         newArr.push({
           playerId: ar.playerId,
           year: ar.year,
-          GP: ar.score.GP,
-          G: ar.score.G,
-          A: ar.score.A,
-          PTS: ar.score.PTS,
+          score: {
+            GP: ar.score.GP,
+            GA: ar.score.GA,
+            G: ar.score.G,
+            P: ar.score.P,
+            A: ar.score.A,
+            SA: ar.score.SA,
+            SV: ar.score.SV,
+            SVPercent: ar.score.SVPercent,
+            PTS: ar.score.PTS,
+            PIM: ar.score.PIM,
+            TOI: ar.score.TOI,
+          },
         });
       } else {
-        newArr[index].GP += ar.score.GP;
-        newArr[index].G += ar.score.G;
-        newArr[index].A += ar.score.A;
-        newArr[index].PTS += ar.score.PTS;
+        newArr[index].score.GP += ar.score.GP;
+        newArr[index].score.G += ar.score.G;
+        newArr[index].score.A += ar.score.A;
+        newArr[index].score.PTS += ar.score.PTS;
+        newArr[index].score.PIM += ar.score.PIM;
+        newArr[index].score.P += ar.score.P;
+        newArr[index].score.GA += ar.score.GA;
+        newArr[index].score.SA += ar.score.SA;
+        newArr[index].score.SV += ar.score.SV;
+        newArr[index].score.TOI += ar.score.TOI;
+        newArr[index].score.SVPercent = Math.floor((1 - newArr[index].score.GA / newArr[index].score.SA) * 100);
       }
     }
     return newArr;
   };
 
-  const showPlayerScoreYearly = (playerFromServer: Player, yearlyTeamScroreFromServer: TeamScore[]) => {
+  const showPlayerScoreYearly = (playerFromServer: Player, playerScoreFromServer: any[]) => {
     const arr: PlayerScoreEach[] = [];
-    yearlyTeamScroreFromServer?.map(score => {
+    playerScoreFromServer?.map(score => {
       const scores = score?.playerScore;
       for (let i = 0; i < scores.length; i += 1) {
         const singleScore = scores[i];
@@ -66,18 +82,12 @@ const useLogic = (): Logic => {
       return arr;
     });
     const notDuplicatePlayerRecords = mergeArr(arr);
-    const result = [];
+    let result;
     for (let k = 0; k < notDuplicatePlayerRecords.length; k += 1) {
       if (playerFromServer.id === notDuplicatePlayerRecords[k].playerId) {
         notDuplicatePlayerRecords[k].playerName = playerFromServer.name;
         notDuplicatePlayerRecords[k].position = playerFromServer.position;
-        notDuplicatePlayerRecords[k].score = {
-          GP: notDuplicatePlayerRecords[k].GP,
-          G: notDuplicatePlayerRecords[k].G,
-          A: notDuplicatePlayerRecords[k].A,
-          PTS: notDuplicatePlayerRecords[k].PTS,
-        };
-        result.push(notDuplicatePlayerRecords[k]);
+        result = notDuplicatePlayerRecords[k];
       }
     }
     return result;
@@ -88,8 +98,8 @@ const useLogic = (): Logic => {
       if (typeof router.query.id === 'string') {
         const playerFromServer = await readPlayerApi({ id: router.query.id });
         setPlayer(playerFromServer);
-        const yearlyTeamScroreFromServer = await readTeamScoreApi({ id: playerFromServer.teamId });
-        const result = showPlayerScoreYearly(playerFromServer, yearlyTeamScroreFromServer);
+        const playerScoreFromServer = await readPlayerScoreApi({ id: router.query.id });
+        const result = showPlayerScoreYearly(playerFromServer, playerScoreFromServer);
         setPlayerScore(result);
       }
     } catch (error) {

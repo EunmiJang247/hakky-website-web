@@ -5,8 +5,8 @@ import MenuBar from '../../components/menu-bar';
 import PlayerDetailTable from '../../components/player-detail';
 import TagSmall from '../../components/tag-small';
 import Footer from '../../components/footer';
-import StrikerRankTable from '../../components/striker-rank-table';
-import DivisionStrikerRankTable from '../../components/division-striker-rank-table';
+import DivisionStrikerRankTableOnePlayer from '../../components/division-striker-rank-table-one-player';
+import DivisionGoalieRankTableOnePlayer from '../../components/division-goalie-rank-table-one-player';
 
 const PlayerDetailPage = () => {
   const logic = useLogic();
@@ -38,7 +38,12 @@ const PlayerDetailPage = () => {
         <div className="space20" />
         <div className="w-full flex justify-center items-center">
           <div className="w-full max-w-[1420px] flex items-center gap-2">
-            <DivisionStrikerRankTable strikers={logic.playerScore} teamName={logic.player.teamName} />
+            {(logic.player.position === '공격수' || logic.player.position === '수비수') && (
+              <DivisionStrikerRankTableOnePlayer striker={logic.playerScore} teamName={logic.player.teamName} />
+            )}
+            {logic.player.position === '골리' && (
+              <DivisionGoalieRankTableOnePlayer golie={logic.playerScore} teamName={logic.player.teamName} />
+            )}
           </div>
         </div>
       </div>
