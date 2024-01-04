@@ -53,7 +53,7 @@ const DivisionStrikerRankTable: React.FC<Props> = ({ strikers, teamName, current
                   <Link href={`/player/${p.playerId}`}>{p.playerName}</Link>
                 </td>
                 <td className="w-[20%]">{p.playerTeamName ? p.playerTeamName : teamName}</td>
-                <th className="w-[20%]">{p.score.GP ?? 0}</th>
+                <th className="w-[13%]">{p.score.GP ?? 0}</th>
                 <td className="w-[13%]">{p.score.G ?? 0}</td>
                 <td className="w-[13%]">{p.score.A ?? 0}</td>
                 <td className="w-[13%]">{p.score.PTS ?? 0}</td>
