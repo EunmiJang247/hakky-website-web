@@ -23,6 +23,7 @@ type TeamScore = {
   teamName: string;
   year?: string;
   score: {
+    T: number;
     GD: number;
     GP: number;
     W: number;

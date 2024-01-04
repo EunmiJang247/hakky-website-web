@@ -15,6 +15,7 @@ const DivisionTeamRankTable: React.FC<Props> = ({ teams }) => {
           <th className="flex-1">GP</th>
           <th className="flex-1">W</th>
           <th className="flex-1">L</th>
+          <th className="flex-1">T</th>
           <th className="flex-1">OTW</th>
           <th className="flex-1">OTL</th>
           <th className="flex-1">GF</th>
@@ -34,6 +35,7 @@ const DivisionTeamRankTable: React.FC<Props> = ({ teams }) => {
             <td className="flex-1">{d.score.GP ?? 0}</td>
             <td className="flex-1">{d.score.W ?? 0}</td>
             <td className="flex-1">{d.score.L ?? 0}</td>
+            <td className="flex-1">{d.score.T ?? 0}</td>
             <td className="flex-1">{d.score.OTW ?? 0}</td>
             <td className="flex-1">{d.score.OTL ?? 0}</td>
             <td className="flex-1">{d.score.GF ?? 0}</td>
