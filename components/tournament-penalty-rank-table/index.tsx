@@ -7,7 +7,6 @@ interface Props {
 }
 
 const TournamentPenaltyRankTable: React.FC<Props> = ({ tournamentData, tabName }) => {
-  console.log(tournamentData.optionPaneltiesHome);
   return (
     <table className="w-full">
       <tbody className="bg-black">
