@@ -99,7 +99,7 @@ const Calendar: React.FC<Props> = ({ logic }) => {
                 {format(v, 'd')}
               </span>
 
-              <div className="mt-8 p-1 px-2 sm:mt-0">
+              <div className="mt-8 p-1 px-2 sm:mt-0 flex gap-1">
                 {logic.tournaments.map(t => {
                   const tournamentMonth = new Date(t.tournamentDate).getMonth();
                   const tournamentDate = new Date(t.tournamentDate).getDate();
@@ -121,7 +121,7 @@ const Calendar: React.FC<Props> = ({ logic }) => {
                           onClick={() => setMobileTournamentName(`${t.homeTeamName} vs ${t.awayTeamName}`)}
                         >
                           <span className="text-[#E20B30] text-xs relative top-3">
-                            <img src="/dot.png" alt="dot" className="w-2" />
+                            <img src="/dot.png" alt="dot" className="w-1" />
                           </span>
                         </button>
                       </>
