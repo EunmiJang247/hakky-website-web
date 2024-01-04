@@ -83,7 +83,6 @@ const useLogic = (): Logic => {
       return arr;
     });
     const notDuplicatePlayerRecords = mergeArr(arr);
-    console.log(notDuplicatePlayerRecords);
     let result;
     for (let k = 0; k < notDuplicatePlayerRecords.length; k += 1) {
       if (playerFromServer.id === notDuplicatePlayerRecords[k].playerId) {

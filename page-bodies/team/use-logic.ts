@@ -40,6 +40,7 @@ const useLogic = (): Logic => {
 
   const mergeArr = (arr: PlayerScoreEach[]) => {
     const newArr: any[] = [];
+
     for (let i = 0; i < arr.length; i += 1) {
       const ar = arr[i];
       const index = newArr.findIndex(newar => newar.playerId === ar.playerId && newar.year === ar.year);
@@ -48,31 +49,33 @@ const useLogic = (): Logic => {
           playerId: ar.playerId,
           year: ar.year,
           score: {
-            GP: ar.score.GP,
-            GA: ar.score.GA,
-            G: ar.score.G,
-            P: ar.score.P,
-            A: ar.score.A,
-            SA: ar.score.SA,
-            SV: ar.score.SV,
-            SVPercent: ar.score.SVPercent,
-            PTS: ar.score.PTS,
-            PIM: ar.score.PIM,
-            TOI: ar.score.TOI,
+            GP: ar.score.GP ? Number(ar.score.GP) : 0,
+            GA: ar.score.GA ? Number(ar.score.GA) : 0,
+            G: ar.score.G ? Number(ar.score.G) : 0,
+            P: ar.score.P ? Number(ar.score.P) : 0,
+            A: ar.score.A ? Number(ar.score.A) : 0,
+            SA: ar.score.SA ? Number(ar.score.SA) : 0,
+            SV: ar.score.SV ? Number(ar.score.SV) : 0,
+            SVPercent: ar.score.SVPercent ? Number(ar.score.SVPercent) : 0,
+            PTS: ar.score.PTS ? Number(ar.score.PTS) : 0,
+            PIM: ar.score.PIM ? Number(ar.score.PIM) : 0,
+            TOI: ar.score.TOI ? Number(ar.score.TOI) : 0,
           },
         });
       } else {
-        newArr[index].score.GP += ar.score.GP;
-        newArr[index].score.G += ar.score.G;
-        newArr[index].score.A += ar.score.A;
-        newArr[index].score.PTS += ar.score.PTS;
-        newArr[index].score.PIM += ar.score.PIM;
-        newArr[index].score.P += ar.score.P;
-        newArr[index].score.GA += ar.score.GA;
-        newArr[index].score.SA += ar.score.SA;
-        newArr[index].score.SV += ar.score.SV;
-        newArr[index].score.TOI += ar.score.TOI;
-        newArr[index].score.SVPercent = Math.floor((1 - newArr[index].score.GA / newArr[index].score.SA) * 100);
+        newArr[index].score.GP = (ar.score.GP ? Number(ar.score.GP) : 0) + (Number(newArr[index].score.GP) ?? 0);
+        newArr[index].score.G = (ar.score.G ? Number(ar.score.G) : 0) + (Number(newArr[index].score.G) ?? 0);
+        newArr[index].score.A = (ar.score.A ? Number(ar.score.A) : 0) + (Number(newArr[index].score.A) ?? 0);
+        newArr[index].score.PTS = (ar.score.PTS ? Number(ar.score.PTS) : 0) + (Number(newArr[index].score.PTS) ?? 0);
+        newArr[index].score.PIM = (ar.score.PIM ? Number(ar.score.PIM) : 0) + (Number(newArr[index].score.PIM) ?? 0);
+        newArr[index].score.P = (ar.score.P ? Number(ar.score.P) : 0) + (Number(newArr[index].score.P) ?? 0);
+        newArr[index].score.GA = (ar.score.GA ? Number(ar.score.GA) : 0) + (Number(newArr[index].score.GA) ?? 0);
+        newArr[index].score.SA = (ar.score.SA ? Number(ar.score.SA) : 0) + (Number(newArr[index].score.SA) ?? 0);
+        newArr[index].score.SV = (ar.score.SV ? Number(ar.score.SV) : 0) + (Number(newArr[index].score.SV) ?? 0);
+        newArr[index].score.TOI = (ar.score.TOI ? Number(ar.score.TOI) : 0) + (Number(newArr[index].score.TOI) ?? 0);
+        newArr[index].score.SVPercent = Math.floor(
+          (1 - Number(newArr[index].score.GA) / Number(newArr[index].score.SA)) * 100
+        );
       }
     }
     return newArr;

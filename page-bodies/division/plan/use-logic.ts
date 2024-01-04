@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Loading from '../../../components/loading';
 import Division from '../../../data-types/division';
 import Tournament from '../../../data-types/tournament';
 import useReadDivision from '../../../services/division/read';
