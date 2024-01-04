@@ -109,7 +109,7 @@ const Calendar: React.FC<Props> = ({ logic }) => {
                     return (
                       <>
                         <p
-                          className="text-white bg-dark-gray rounded py-1 px-2 cursor-pointer font12400gray truncate sm:hidden"
+                          className="text-white bg-dark-gray rounded py-1 px-2 cursor-pointer font12400gray truncate sm:hidden mb-1"
                           key={t.id}
                         >
                           <Link href={`/tournament/${t.id}`}>
