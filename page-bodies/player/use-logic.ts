@@ -53,16 +53,16 @@ const useLogic = (): Logic => {
           },
         });
       } else {
-        newArr[index].score.GP = ar.score.GP ? Number(ar.score.GP) : 0 + Number(newArr[index].score.GP ?? 0);
-        newArr[index].score.G = ar.score.G ? Number(ar.score.G) : 0 + Number(newArr[index].score.G ?? 0);
-        newArr[index].score.A = ar.score.A ? Number(ar.score.A) : 0 + Number(newArr[index].score.A ?? 0);
-        newArr[index].score.PTS = ar.score.PTS ? Number(ar.score.PTS) : 0 + Number(newArr[index].score.PTS ?? 0);
-        newArr[index].score.PIM = ar.score.PIM ? Number(ar.score.PIM) : 0 + Number(newArr[index].score.PIM ?? 0);
-        newArr[index].score.P = ar.score.P ? Number(ar.score.P) : 0 + Number(newArr[index].score.P ?? 0);
-        newArr[index].score.GA = ar.score.GA ? Number(ar.score.GA) : 0 + Number(newArr[index].score.GA ?? 0);
-        newArr[index].score.SA = ar.score.SA ? Number(ar.score.SA) : 0 + Number(newArr[index].score.SA ?? 0);
-        newArr[index].score.SV = ar.score.SV ? Number(ar.score.SV) : 0 + Number(newArr[index].score.SV ?? 0);
-        newArr[index].score.TOI = ar.score.TOI ? Number(ar.score.TOI) : 0 + Number(newArr[index].score.TOI ?? 0);
+        newArr[index].score.GP = (ar.score.GP ? Number(ar.score.GP) : 0) + (Number(newArr[index].score.GP) ?? 0);
+        newArr[index].score.G = (ar.score.G ? Number(ar.score.G) : 0) + (Number(newArr[index].score.G) ?? 0);
+        newArr[index].score.A = (ar.score.A ? Number(ar.score.A) : 0) + (Number(newArr[index].score.A) ?? 0);
+        newArr[index].score.PTS = (ar.score.PTS ? Number(ar.score.PTS) : 0) + (Number(newArr[index].score.PTS) ?? 0);
+        newArr[index].score.PIM = (ar.score.PIM ? Number(ar.score.PIM) : 0) + (Number(newArr[index].score.PIM) ?? 0);
+        newArr[index].score.P = (ar.score.P ? Number(ar.score.P) : 0) + (Number(newArr[index].score.P) ?? 0);
+        newArr[index].score.GA = (ar.score.GA ? Number(ar.score.GA) : 0) + (Number(newArr[index].score.GA) ?? 0);
+        newArr[index].score.SA = (ar.score.SA ? Number(ar.score.SA) : 0) + (Number(newArr[index].score.SA) ?? 0);
+        newArr[index].score.SV = (ar.score.SV ? Number(ar.score.SV) : 0) + (Number(newArr[index].score.SV) ?? 0);
+        newArr[index].score.TOI = (ar.score.TOI ? Number(ar.score.TOI) : 0) + (Number(newArr[index].score.TOI) ?? 0);
         newArr[index].score.SVPercent = Math.floor(
           (1 - Number(newArr[index].score.GA) / Number(newArr[index].score.SA)) * 100
         );
