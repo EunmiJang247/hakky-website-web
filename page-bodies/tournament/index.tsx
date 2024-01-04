@@ -51,7 +51,7 @@ const Tournament = () => {
                 awayTeamName={logic.tournamentData.awayTeamName}
               />
               <div className="space20" />
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid grid-cols-2 gap-5 md:grid-cols-1">
                 <TournamentStrikerRankTable tournamentData={logic.tournamentData} tabName={logic.tabName} />
                 <div className="grid grid-rows-2 gap-5">
                   <TournamentPenaltyRankTable tournamentData={logic.tournamentData} tabName={logic.tabName} />

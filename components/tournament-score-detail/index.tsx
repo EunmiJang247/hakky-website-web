@@ -41,7 +41,7 @@ const TournamentScoreDetail: React.FC<Props> = ({ tournamentData }) => {
           <p className="bg-dark-gray p-3 rounded font1624500white sm:font12500white sm:py-1 sm:px-2">어웨이</p>
         </div>
         <div className="flex gap-6 items-center sm:flex-col sm:gap-1 hidden sm:flex">
-          <div className="flex">
+          <div className="flex sm:gap-1">
             <div className="flex gap-6 items-center sm:flex sm:gap-2">
               <p className="w-16 h-16 sm:w-6 sm:h-6">
                 <img src="/logo140.png" alt="" />

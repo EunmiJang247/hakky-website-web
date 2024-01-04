@@ -9,7 +9,7 @@ const TournamentGoalieRankTable: React.FC<Props> = ({ tournamentData, tabName })
   return (
     <table className="w-full">
       <tbody className="bg-black">
-        <tr className="font16500blue flex justify-between py-5 border-b border-dark-gray sm:font12500blue">
+        <tr className="font16500blue flex justify-between py-5 border-b border-dark-gray sm:font12500blue sm:py-1">
           <th className="w-12">No</th>
           <th className="w-1/5 text-left pl-3">이름</th>
           <th className="flex-1">1P</th>
@@ -19,7 +19,7 @@ const TournamentGoalieRankTable: React.FC<Props> = ({ tournamentData, tabName })
         {tabName === 'home' &&
           tournamentData.optionGoalieSavesHome.map((d, idx) => (
             <tr
-              className="font1624500white flex justify-between py-4 border-b border-dark-gray sm:font12500white"
+              className="font1624500white flex justify-between py-4 border-b border-dark-gray sm:font12500white sm:py-1"
               key={d.time}
             >
               <td className="w-12">{idx + 1}</td>
