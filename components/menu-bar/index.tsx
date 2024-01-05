@@ -69,7 +69,7 @@ const MenuBar: React.FC = () => {
                             key="score"
                             href={`/division/score/${s.divisionId}`}
                           >
-                            스코어
+                            랭킹
                           </Link>
                         </div>
                       )}

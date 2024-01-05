@@ -16,7 +16,7 @@ const MENU = [
             href: 'regulation',
           },
           {
-            name: '스코어',
+            name: '랭킹',
             href: 'DIVISION1',
           },
         ],
@@ -30,7 +30,7 @@ const MENU = [
             href: 'regulation',
           },
           {
-            name: '스코어',
+            name: '랭킹',
             href: 'DIVISION1',
           },
         ],
@@ -44,7 +44,7 @@ const MENU = [
             href: 'regulation',
           },
           {
-            name: '스코어',
+            name: '랭킹',
             href: 'DIVISION1',
           },
         ],
@@ -68,7 +68,7 @@ const MENU = [
             href: 'regulation',
           },
           {
-            name: '스코어',
+            name: '랭킹',
             href: 'DIVISION1',
           },
         ],
@@ -82,7 +82,7 @@ const MENU = [
             href: 'regulation',
           },
           {
-            name: '스코어',
+            name: '랭킹',
             href: 'DIVISION1',
           },
         ],
@@ -96,7 +96,7 @@ const MENU = [
             href: 'regulation',
           },
           {
-            name: '스코어',
+            name: '랭킹',
             href: 'DIVISION1',
           },
         ],

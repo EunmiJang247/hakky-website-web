@@ -71,7 +71,7 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
                             onClick={() => setSideNavOpen(false)}
                             className="text-white p-3 block hover:bg-gray-800 w-full"
                           >
-                            스코어
+                            랭킹
                           </button>
                         </Link>
                       </div>
