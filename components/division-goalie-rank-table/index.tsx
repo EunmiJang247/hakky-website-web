@@ -25,36 +25,56 @@ const DivisionGoalieRankTable: React.FC<Props> = ({ golies, teamName, currentYea
           if (p.position === '골리' && Number(p.year) === currentYear) {
             return (
               <tr
-                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"
+                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-2"
                 key={p.playerId}
               >
                 <td className="w-[15%]">
-                  <Link href={`/player/${p.playerId}`}>{p.playerName}</Link>
+                  <Link
+                    href={`/player/${p.playerId}`}
+                    className="flex flex-col items-center justify-center gap-2 sm:gap-1"
+                  >
+                    <p>{p.playerName}</p>
+                    <img src={p.playerImage} className="w-14 h-14" />
+                  </Link>
                 </td>
-                <td className="w-[15%]">{p.playerTeamName ? p.playerTeamName : teamName}</td>
-                <td className="w-[10%]">{p.score.GP ?? 0}</td>
-                <td className="w-[10%]">{p.score.SA ?? 0}</td>
-                <td className="w-[10%]">{p.score.GA ?? 0}</td>
-                <td className="w-[10%]">{p.score.SV ?? 0}</td>
-                <td className="w-[10%]">{p.score.SVPercent ? p.score.SVPercent.toFixed(2) : 0}%</td>
+                <td className="w-[15%] flex justify-center items-center">
+                  {p.playerTeamName ? p.playerTeamName : teamName}
+                </td>
+                <td className="w-[10%] flex justify-center items-center">{p.score.GP ?? 0}</td>
+                <td className="w-[10%] flex justify-center items-center">{p.score.SA ?? 0}</td>
+                <td className="w-[10%] flex justify-center items-center">{p.score.GA ?? 0}</td>
+                <td className="w-[10%] flex justify-center items-center">{p.score.SV ?? 0}</td>
+                <td className="w-[10%] flex justify-center items-center">
+                  {p.score.SVPercent ? p.score.SVPercent.toFixed(2) : 0}%
+                </td>
               </tr>
             );
           }
           if (p.position === '골리' && !currentYear) {
             return (
               <tr
-                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"
+                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-2"
                 key={p.playerId}
               >
                 <td className="w-[15%]">
-                  <Link href={`/player/${p.playerId}`}>{p.playerName}</Link>
+                  <Link
+                    href={`/player/${p.playerId}`}
+                    className="flex flex-col items-center justify-center gap-2 sm:gap-1"
+                  >
+                    <p>{p.playerName}</p>
+                    <img src={p.playerImage} className="w-14 h-14" />
+                  </Link>
                 </td>
-                <td className="w-[15%]">{p.playerTeamName ? p.playerTeamName : teamName}</td>
-                <td className="w-[10%]">{p.score.GP ?? 0}</td>
-                <td className="w-[10%]">{p.score.SA ?? 0}</td>
-                <td className="w-[10%]">{p.score.GA ?? 0}</td>
-                <td className="w-[10%]">{p.score.SV ?? 0}</td>
-                <td className="w-[10%]">{p.score.SVPercent ? p.score.SVPercent.toFixed(2) : 0}%</td>
+                <td className="w-[15%] flex justify-center items-center">
+                  {p.playerTeamName ? p.playerTeamName : teamName}
+                </td>
+                <td className="w-[10%] flex justify-center items-center">{p.score.GP ?? 0}</td>
+                <td className="w-[10%] flex justify-center items-center">{p.score.SA ?? 0}</td>
+                <td className="w-[10%] flex justify-center items-center">{p.score.GA ?? 0}</td>
+                <td className="w-[10%] flex justify-center items-center">{p.score.SV ?? 0}</td>
+                <td className="w-[10%] flex justify-center items-center">
+                  {p.score.SVPercent ? p.score.SVPercent.toFixed(2) : 0}%
+                </td>
               </tr>
             );
           }

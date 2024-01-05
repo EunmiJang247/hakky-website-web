@@ -100,7 +100,7 @@ const Calendar: React.FC<Props> = ({ logic }) => {
               </span>
 
               <div className="mt-8 p-1 px-2 sm:mt-0 sm:flex gap-1">
-                {logic.tournaments.map(t => {
+                {logic.tournaments.map((t, idx) => {
                   const tournamentMonth = new Date(t.tournamentDate).getMonth();
                   const tournamentDate = new Date(t.tournamentDate).getDate();
                   const nowMonth = v.getMonth();
@@ -110,7 +110,8 @@ const Calendar: React.FC<Props> = ({ logic }) => {
                       <>
                         <p
                           className="text-white bg-dark-gray rounded py-1 px-2 cursor-pointer font12400gray truncate sm:hidden mb-1"
-                          key={t.id}
+                          // eslint-disable-next-line react/no-array-index-key
+                          key={idx}
                         >
                           <Link href={`/tournament/${t.id}`}>
                             {t.homeTeamName} vs {t.awayTeamName}

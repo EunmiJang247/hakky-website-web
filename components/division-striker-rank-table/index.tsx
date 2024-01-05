@@ -28,36 +28,52 @@ const DivisionStrikerRankTable: React.FC<Props> = ({ strikers, teamName, current
           ) {
             return (
               <tr
-                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"
+                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-2"
                 key={p.playerId}
               >
                 <td className="w-[20%]">
-                  <Link href={`/player/${p.playerId}`}>{p.playerName}</Link>
+                  <Link
+                    href={`/player/${p.playerId}`}
+                    className="flex flex-col items-center justify-center gap-2 sm:gap-1"
+                  >
+                    <p>{p.playerName}</p>
+                    <img src={p.playerImage} />
+                  </Link>
                 </td>
-                <td className="w-[20%]">{p.playerTeamName ? p.playerTeamName : teamName}</td>
-                <td className="w-[13%]">{p.score.GP ?? 0}</td>
-                <td className="w-[13%]">{p.score.G ?? 0}</td>
-                <td className="w-[13%]">{p.score.A ?? 0}</td>
-                <td className="w-[13%]">{p.score.PTS ?? 0}</td>
-                <td className="w-[13%]">{p.score.PIM ?? 0}</td>
+                <td className="w-[20%] flex justify-center items-center">
+                  {p.playerTeamName ? p.playerTeamName : teamName}
+                </td>
+                <td className="w-[13%] flex justify-center items-center">{p.score.GP ?? 0}</td>
+                <td className="w-[13%] flex justify-center items-center">{p.score.G ?? 0}</td>
+                <td className="w-[13%] flex justify-center items-center">{p.score.A ?? 0}</td>
+                <td className="w-[13%] flex justify-center items-center">{p.score.PTS ?? 0}</td>
+                <td className="w-[13%] flex justify-center items-center">{p.score.PIM ?? 0}</td>
               </tr>
             );
           }
           if ((p.position === '공격수' && !currentYear) || (p.position === '수비수' && !currentYear)) {
             return (
               <tr
-                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"
+                className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-2"
                 key={p.playerId}
               >
                 <td className="w-[20%]">
-                  <Link href={`/player/${p.playerId}`}>{p.playerName}</Link>
+                  <Link
+                    href={`/player/${p.playerId}`}
+                    className="flex flex-col items-center justify-center gap-2 sm:gap-1"
+                  >
+                    <p>{p.playerName}</p>
+                    <img src={p.playerImage} className="w-14 h-14" />
+                  </Link>
                 </td>
-                <td className="w-[20%]">{p.playerTeamName ? p.playerTeamName : teamName}</td>
-                <th className="w-[13%]">{p.score.GP ?? 0}</th>
-                <td className="w-[13%]">{p.score.G ?? 0}</td>
-                <td className="w-[13%]">{p.score.A ?? 0}</td>
-                <td className="w-[13%]">{p.score.PTS ?? 0}</td>
-                <td className="w-[13%]">{p.score.PIM ?? 0}</td>
+                <td className="w-[20%] flex justify-center items-center">
+                  {p.playerTeamName ? p.playerTeamName : teamName}
+                </td>
+                <th className="w-[13%] flex justify-center items-center">{p.score.GP ?? 0}</th>
+                <td className="w-[13%] flex justify-center items-center">{p.score.G ?? 0}</td>
+                <td className="w-[13%] flex justify-center items-center">{p.score.A ?? 0}</td>
+                <td className="w-[13%] flex justify-center items-center">{p.score.PTS ?? 0}</td>
+                <td className="w-[13%] flex justify-center items-center">{p.score.PIM ?? 0}</td>
               </tr>
             );
           }

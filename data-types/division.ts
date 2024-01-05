@@ -4,6 +4,7 @@ type PlayerScore = {
   playerTeamName: string;
   position: string;
   year?: string;
+  playerImage: string;
   score: {
     G: number;
     A: number;
@@ -19,6 +20,7 @@ type PlayerScore = {
 };
 
 type TeamScore = {
+  teamLogo: string | undefined;
   teamId: string;
   teamName: string;
   year?: string;

@@ -2,6 +2,9 @@ import Id from './id';
 import S3FileType from './s3-file';
 
 type OptionsGoal = {
+  a2PlayerImage?: string | undefined;
+  a1PlayerImage?: any;
+  goalPlayerImage?: any;
   homeTeamName: string;
   awayTeamName: string;
   homeScore: string[];
@@ -42,6 +45,7 @@ interface Tournament {
   divisionId: Id;
   optionsGoalsHome: OptionsGoal[];
   optionGoalieSavesHome: {
+    playerImage: string | undefined;
     p1: string;
     p2: string;
     p3: string;
@@ -51,6 +55,7 @@ interface Tournament {
     time: string;
   }[];
   optionPaneltiesHome: {
+    playerImage: string | undefined;
     p: string;
     time: string;
     penalty: number;
@@ -59,6 +64,7 @@ interface Tournament {
     no: string;
   }[];
   optionGoalieSavesAway: {
+    playerImage: string | undefined;
     time: string;
     p1: string;
     p2: string;
@@ -68,6 +74,7 @@ interface Tournament {
     total: number;
   }[];
   optionPaneltiesAway: {
+    playerImage: string | undefined;
     p: string;
     time: string;
     penalty: number;
@@ -76,14 +83,17 @@ interface Tournament {
     playerName: string;
   }[];
   optionsGoalsAway: {
+    a2PlayerImage?: string | undefined;
+    a1PlayerImage?: any;
+    goalPlayerImage?: any;
     p: string;
     time: string;
     goal: string;
     a1: string;
     a2: string;
-    goalPlayerName: string;
-    a1PlayerName: string;
-    a2PlayerName: string;
+    goalPlayerName?: string;
+    a1PlayerName?: string;
+    a2PlayerName?: string;
   }[];
   optionsPlayersHome: {
     position: string;

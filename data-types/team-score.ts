@@ -17,6 +17,7 @@ type PlayerScoreEach = {
   playerName?: string;
   position?: string;
   playerTeamName?: string;
+  playerImage: string;
   score: {
     TOI: any;
     P: any;

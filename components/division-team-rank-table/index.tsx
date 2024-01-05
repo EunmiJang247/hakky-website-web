@@ -10,7 +10,7 @@ const DivisionTeamRankTable: React.FC<Props> = ({ teams }) => {
     <table className="w-full">
       <tbody className="bg-black">
         <tr className="font16500blue sm:font12500blue flex justify-between py-5 border-b border-dark-gray sm:py-1">
-          <th className="w-12">No</th>
+          <th className="w-[10%]">No</th>
           <th className="w-1/5 text-left pl-3">팀</th>
           <th className="flex-1">GP</th>
           <th className="flex-1">W</th>
@@ -28,9 +28,12 @@ const DivisionTeamRankTable: React.FC<Props> = ({ teams }) => {
             className="font1624500white sm:font12500white flex justify-between py-4 border-b border-dark-gray sm:py-1"
             key={d.teamId}
           >
-            <td className="w-12">{idx + 1}</td>
+            <td className="w-[10%]">{idx + 1}</td>
             <td className="w-1/5 text-left pl-3">
-              <Link href={`/team/${d.teamId}`}>{d.teamName}</Link>
+              <Link href={`/team/${d.teamId}`} className="flex items-center gap-2">
+                <img src={d.teamLogo} className="w-7 h-7 sm:w-3 sm:w-3 sm:h-3" />
+                <p>{d.teamName}</p>
+              </Link>
             </td>
             <td className="flex-1">{d.score.GP ?? 0}</td>
             <td className="flex-1">{d.score.W ?? 0}</td>

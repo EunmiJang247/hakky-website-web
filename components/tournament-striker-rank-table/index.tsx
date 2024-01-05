@@ -11,46 +11,58 @@ const TournamentStrikerRankTable: React.FC<Props> = ({ tournamentData, tabName }
     <table className="w-full">
       <tbody className="bg-black">
         <tr className="font16500blue flex justify-between py-5 border-b border-dark-gray sm:font12500blue sm:py-1">
-          <th className="w-12">No</th>
-          <th className="w-1/5 text-left pl-3">이름</th>
-          <th className="w-1/5 text-left pl-3">TIME</th>
-          <th className="flex-1">P</th>
-          <th className="flex-1">G</th>
-          <th className="flex-1">A1</th>
-          <th className="flex-1">A2</th>
+          <th className="w-[10%]">No</th>
+          <th className="w-[25%] text-left pl-3">이름</th>
+          <th className="w-[15%] flex items-center justify-cente">TIME</th>
+          <th className="w-[12%] flex items-center justify-center">P</th>
+          <th className="w-[12%] flex items-center justify-center">G</th>
+          <th className="w-[12%] flex items-center justify-center">A1</th>
+          <th className="w-[12%] flex items-center justify-center">A2</th>
         </tr>
         {tabName === 'home' &&
           tournamentData.optionsGoalsHome.map((d, idx) => (
             <tr
               className="font1624500white flex justify-between py-4 border-b border-dark-gray sm:font12500white sm:py-1"
-              key={d.time}
+              // eslint-disable-next-line react/no-array-index-key
+              key={idx}
             >
-              <td className="w-12">{idx + 1}</td>
-              <td className="w-1/5 text-left pl-3">
-                {d.goalPlayerName ? d.goalPlayerName : d.a1PlayerName ? d.a1PlayerName : d.a2PlayerName}
+              <td className="w-[10%] flex items-center justify-center">{idx + 1}</td>
+              <td className="w-[25%] text-left pl-3 flex gap-1 items-center">
+                <p>{d.goalPlayerName ? d.goalPlayerName : d.a1PlayerName ? d.a1PlayerName : d.a2PlayerName}</p>
+                <img
+                  src={d.goalPlayerImage ? d.goalPlayerImage : d.a1PlayerImage ? d.a1PlayerImage : d.a2PlayerImage}
+                  className="w-6 h-6"
+                  alt="player"
+                />
               </td>
-              <th className="w-1/5 text-left pl-3">{d.time}</th>
-              <td className="flex-1">{d.p}</td>
-              <td className="flex-1">{d.goal ? '1' : 0}</td>
-              <td className="flex-1">{d.a1 ? '1' : 0}</td>
-              <td className="flex-1">{d.a2 ? '1' : 0}</td>
+              <th className="w-[15%] flex items-center justify-center">{d.time}</th>
+              <td className="w-[12%] flex items-center justify-center">{d.p}</td>
+              <td className="w-[12%] flex items-center justify-center">{d.goal ? '1' : 0}</td>
+              <td className="w-[12%] flex items-center justify-center">{d.a1 ? '1' : 0}</td>
+              <td className="w-[12%] flex items-center justify-center">{d.a2 ? '1' : 0}</td>
             </tr>
           ))}
         {tabName === 'away' &&
           tournamentData.optionsGoalsAway.map((d, idx) => (
             <tr
               className="font1624500white flex justify-between py-4 border-b border-dark-gray sm:font12500white sm:py-1"
-              key={d.time}
+              // eslint-disable-next-line react/no-array-index-key
+              key={idx}
             >
-              <td className="w-12">{idx + 1}</td>
-              <td className="w-1/5 text-left pl-3">
-                {d.goalPlayerName ? d.goalPlayerName : d.a1PlayerName ? d.a1PlayerName : d.a2PlayerName}
+              <td className="w-[10%]">{idx + 1}</td>
+              <td className="w-[25%] text-left pl-3 flex gap-1 items-center">
+                <p>{d.goalPlayerName ? d.goalPlayerName : d.a1PlayerName ? d.a1PlayerName : d.a2PlayerName}</p>
+                <img
+                  src={d.goalPlayerImage ? d.goalPlayerImage : d.a1PlayerImage ? d.a1PlayerImage : d.a2PlayerImage}
+                  className="w-6 h-6"
+                  alt="player"
+                />
               </td>
-              <th className="w-1/5 text-left pl-3">{d.time}</th>
-              <td className="flex-1">{d.p}</td>
-              <td className="flex-1">{d.goal ? '1' : 0}</td>
-              <td className="flex-1">{d.a1 ? '1' : 0}</td>
-              <td className="flex-1">{d.a2 ? '1' : 0}</td>
+              <th className="w-[15%] flex items-center justify-center">{d.time}</th>
+              <td className="w-[12%] flex items-center justify-center">{d.p}</td>
+              <td className="w-[12%] flex items-center justify-center">{d.goal ? '1' : 0}</td>
+              <td className="w-[12%] flex items-center justify-center">{d.a1 ? '1' : 0}</td>
+              <td className="w-[12%] flex items-center justify-center">{d.a2 ? '1' : 0}</td>
             </tr>
           ))}
       </tbody>
