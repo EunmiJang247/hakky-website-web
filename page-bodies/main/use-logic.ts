@@ -121,7 +121,8 @@ const useLogic = (): Logic => {
 
   useEffect(() => {
     if (menuLis !== undefined) {
-      setHighlightLeague(menuLis[0]);
+      const middleMenubarMenus = menuLis.filter(m => m.leagueType === 'regular');
+      setHighlightLeague(middleMenubarMenus[0]);
     }
   }, [menuLis]);
 

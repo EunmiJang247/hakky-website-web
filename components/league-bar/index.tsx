@@ -7,10 +7,11 @@ interface Props {
 }
 
 const LeagueBar: React.FC<Props> = ({ menuLis, highlightLeague, setHighlightLeague }) => {
+  const middleMenubarMenus = menuLis?.filter(m => m.leagueType === 'regular');
   return (
     <div className="w-full flex justify-center items-center bg-black overflow-x-auto no-scrollbar">
       <div className="w-full max-w-[1420px] flex items-center md:ml-10 sm:ml-5">
-        {menuLis?.map(m => {
+        {middleMenubarMenus?.map(m => {
           if (highlightLeague?.id === m.id) {
             return (
               <button
