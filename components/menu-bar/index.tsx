@@ -25,7 +25,8 @@ const MenuBar: React.FC = () => {
           </div>
           {menuLis?.map((m, idx) => (
             <div
-              key={m.name}
+              // eslint-disable-next-line react/no-array-index-key
+              key={idx}
               className="flex flex-col relative  h-full"
               onMouseEnter={() => setSubMenuOpen(idx)}
               onMouseLeave={() => setSubMenuOpen(-1)}
@@ -42,7 +43,15 @@ const MenuBar: React.FC = () => {
                     </Link>
                   </div>
                 )}
-                {m.divisions &&
+                {m.leagueType === 'student' && subMenuOpen === idx && (
+                  <div className="px-3 py-2.5 hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer relative w-32 flex justify-between items-center">
+                    <Link href={`/tournament/${m.tournamentId}`}>
+                      <p className="w-full h-full">대회 결과</p>
+                    </Link>
+                  </div>
+                )}
+                {m.leagueType === 'regular' &&
+                  m.divisions &&
                   subMenuOpen === idx &&
                   m.divisions.map((s, id) => (
                     <div
