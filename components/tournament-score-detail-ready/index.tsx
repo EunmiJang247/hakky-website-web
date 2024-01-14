@@ -110,13 +110,13 @@ const TournamentScoreDetailReady: React.FC<Props> = ({ tournamentData }) => {
       <div className="flex py-4 justify-center items-center gap-14 sm:gap-2">
         <div className="flex gap-6 items-center sm:gap-2">
           <p className="font1630700white">{tournamentData.homeTeamName}</p>
-          <p className="w-10 h-10">
+          <p className="w-10 h-10 flex items-center">
             <img src={`${tournamentData.homeTeamLogo.tempUrl}`} alt="" />
           </p>
         </div>
         <p className="font1620500darkgray">VS</p>
         <div className="flex gap-6 items-center sm:gap-2">
-          <p className="w-10 h-10">
+          <p className="w-10 h-10 flex items-center">
             <img src={`${tournamentData.awayTeamLogo.tempUrl}`} alt="" />
           </p>
           <p className="font1630700white">{tournamentData.awayTeamName}</p>
