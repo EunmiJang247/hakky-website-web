@@ -35,6 +35,12 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
           </button>
         </div>
         <div className="flex flex-col">
+          <Link
+            href="/youtube"
+            className="w-full text-white p-5 border-solid border-b border-b-main-blue flex justify-center"
+          >
+            유튜브
+          </Link>
           {menuLis?.map(m => {
             if (m.leagueType === 'student' && m.tournamentId) {
               return (
