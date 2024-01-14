@@ -35,51 +35,64 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
           </button>
         </div>
         <div className="flex flex-col">
-          {menuLis?.map(m => (
-            <div key={m.id}>
-              <button
-                onClick={() => handleMenuClick(m.id)}
-                className={`w-full text-white p-5 border-solid border-b border-b-main-blue ${
-                  openMenu === m.id ? 'bg-gray-800' : ''
-                }`}
-              >
-                {m.name}
-              </button>
-              {openMenu === m.id &&
-                m.divisions?.map(d => (
-                  <div key={d.divisionId}>
-                    <button
-                      onClick={() => handleSubMenuClick(d.divisionId)}
-                      className={`w-full text-white p-5 border-solid border-b bottom-0.5 ${
-                        activeSubMenu === d.divisionId ? 'bg-gray-800' : ''
-                      }`}
-                    >
-                      {d.divisionName}
-                    </button>
-                    {activeSubMenu === d.divisionId && (
-                      <div className="ml-4">
-                        <Link href={`/division/plan/${d.divisionId}`}>
-                          <button
-                            onClick={() => setSideNavOpen(false)}
-                            className="text-white p-3 block hover:bg-gray-800 w-full"
-                          >
-                            일정
-                          </button>
-                        </Link>
-                        <Link href={`/division/score/${d.divisionId}`}>
-                          <button
-                            onClick={() => setSideNavOpen(false)}
-                            className="text-white p-3 block hover:bg-gray-800 w-full"
-                          >
-                            랭킹
-                          </button>
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                ))}
-            </div>
-          ))}
+          {menuLis?.map(m => {
+            if (m.tournamentId) {
+              return (
+                <Link
+                  href={`/tournament/${m.tournamentId}`}
+                  className="w-full text-white p-5 border-solid border-b border-b-main-blue flex justify-center"
+                  key={m.id}
+                >
+                  {m.name}
+                </Link>
+              );
+            }
+            return (
+              <div key={m.id}>
+                <button
+                  onClick={() => handleMenuClick(m.id)}
+                  className={`w-full text-white p-5 border-solid border-b border-b-main-blue ${
+                    openMenu === m.id ? 'bg-gray-800' : ''
+                  }`}
+                >
+                  {m.name}
+                </button>
+                {openMenu === m.id &&
+                  m.divisions?.map(d => (
+                    <div key={d.divisionId}>
+                      <button
+                        onClick={() => handleSubMenuClick(d.divisionId)}
+                        className={`w-full text-white p-5 border-solid border-b bottom-0.5 ${
+                          activeSubMenu === d.divisionId ? 'bg-gray-800' : ''
+                        }`}
+                      >
+                        {d.divisionName}
+                      </button>
+                      {activeSubMenu === d.divisionId && (
+                        <div className="ml-4">
+                          <Link href={`/division/plan/${d.divisionId}`}>
+                            <button
+                              onClick={() => setSideNavOpen(false)}
+                              className="text-white p-3 block hover:bg-gray-800 w-full"
+                            >
+                              일정
+                            </button>
+                          </Link>
+                          <Link href={`/division/score/${d.divisionId}`}>
+                            <button
+                              onClick={() => setSideNavOpen(false)}
+                              className="text-white p-3 block hover:bg-gray-800 w-full"
+                            >
+                              랭킹
+                            </button>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

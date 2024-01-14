@@ -12,7 +12,7 @@ const TournamentPenaltyRankTable: React.FC<Props> = ({ tournamentData, tabName }
       <tbody className="bg-black">
         <tr className="font16500blue flex justify-between py-5 border-b border-dark-gray sm:font12500blue sm:py-1">
           <th className="w-[10%]">No</th>
-          <th className="w-[20%] text-left pl-3">이름</th>
+          <th className="w-[20%] text-center pl-3">이름</th>
           <th className="w-[20%] flex items-center justify-center">TIME</th>
           <th className="w-[10%]">P</th>
           <th className="w-[20%]">Penalty</th>
@@ -25,9 +25,9 @@ const TournamentPenaltyRankTable: React.FC<Props> = ({ tournamentData, tabName }
               key={d.time}
             >
               <td className="w-[10%] flex items-center justify-center">{idx + 1}</td>
-              <td className="w-[20%] text-left pl-3 flex gap-1 flex items-center">
+              <td className="w-[20%] text-left pl-3 flex flex gap-2 items-center sm:gap-0">
                 <p>{d.playerName}</p>
-                <img src={d.playerImage} className="w-6 h-6" />
+                <img src={d.playerImage} className="w-12 h-12 object-cover sm:w-6 sm:h-6" />
               </td>
               <th className="w-[20%] flex items-center justify-center">{d.time}</th>
               <td className="w-[10%] flex items-center justify-center">{d.p}</td>
@@ -42,9 +42,9 @@ const TournamentPenaltyRankTable: React.FC<Props> = ({ tournamentData, tabName }
               key={d.time}
             >
               <td className="w-[10%] flex items-center justify-center">{idx + 1}</td>
-              <td className="w-[20%] text-left pl-3 flex gap-1 lex items-center">
+              <td className="w-[20%] text-left pl-3 flex flex gap-2 items-center sm:gap-0">
                 <p>{d.playerName}</p>
-                <img src={d.playerImage} className="w-6 h-6" />
+                <img src={d.playerImage} className="w-12 h-12 object-cover sm:w-6 sm:h-6" />
               </td>
               <th className="w-[20%] flex items-center justify-center">{d.time}</th>
               <td className="w-[10%] flex items-center justify-center">{d.p}</td>

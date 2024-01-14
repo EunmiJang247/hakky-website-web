@@ -22,7 +22,7 @@ const TournamentTeamScore: React.FC<Props> = ({ optionsGoalsHome, optionsGoalsAw
           <td className="w-[30%] text-left pl-3">
             <Link href={`/team/${tournamentData.homeTeamId}`} className="flex gap-1 flex items-center">
               <p>{optionsGoalsHome.homeTeamName}</p>
-              <img src={tournamentData.homeTeamLogo.tempUrl} className="w-5 h-5" />
+              <img src={tournamentData.homeTeamLogo.tempUrl} className="w-5" />
             </Link>
           </td>
           <td className="w-[10%]">{optionsGoalsHome.homeScore[0]}</td>
@@ -32,9 +32,9 @@ const TournamentTeamScore: React.FC<Props> = ({ optionsGoalsHome, optionsGoalsAw
         </tr>
         <tr className="font1624500white flex justify-between py-4 border-b border-dark-gray sm:font12500white sm:py-1">
           <td className="w-[30%] text-left pl-3">
-            <Link href={`/team/${tournamentData.awayTeamId}`} className="flex gap-1">
+            <Link href={`/team/${tournamentData.awayTeamId}`} className="flex gap-1 flex items-center">
               {optionsGoalsAway.awayTeamName}
-              <img src={tournamentData.awayTeamLogo.tempUrl} className="w-5 h-5" />
+              <img src={tournamentData.awayTeamLogo.tempUrl} className="w-5" />
             </Link>
           </td>
           <td className="w-[10%]">{optionsGoalsAway.awayScore[0]}</td>
