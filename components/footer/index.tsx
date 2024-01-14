@@ -9,9 +9,9 @@ const Footer = () => {
             <p className="font22700white">HOCKEY TV</p>
             <div className="space20" />
             <div className="flex flex-col gap-2">
-              <p className="font14400lightgray">대표자명</p>
-              <p className="font14400lightgray">주소</p>
-              <p className="font14400lightgray">이메일</p>
+              <p className="font14400lightgray">대표자명: 임이삭</p>
+              <p className="font14400lightgray">주소: 기도 과천시 관문로 92, 101동 2020호(힐스테이트 과천중앙) </p>
+              <p className="font14400lightgray">이메일: hockeytvkorea@gmail.com</p>
             </div>
           </div>
           <div className="text-white font22700white">
@@ -37,11 +37,11 @@ const Footer = () => {
       <div className="w-full flex justify-center items-center h-11 bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end font20700white">
         HOCKEY TV
       </div>
-      <div className="w-full flex justify-center items-center h-11 bg-black underline font1620500darkgray">
+      {/* <div className="w-full flex justify-center items-center h-11 bg-black underline font1620500darkgray">
         <Link href="https://accesshomepage.com" className="font-light">
           Made By 여의도개발자들
         </Link>
-      </div>
+      </div> */}
     </>
   );
 };
