@@ -46,7 +46,7 @@ const MenuBar: React.FC = () => {
                 {m.leagueType === 'student' && subMenuOpen === idx && m.tournamentId && (
                   <div className="px-3 py-2.5 hover:bg-gradient-to-r from-gradient-start via-gradient-middle to-gradient-end cursor-pointer relative w-32 flex justify-between items-center">
                     <Link href={`/tournament/${m.tournamentId}`}>
-                      <p className="w-full h-full">대회 결과</p>
+                      <p className="w-full h-full">경기 결과</p>
                     </Link>
                   </div>
                 )}
