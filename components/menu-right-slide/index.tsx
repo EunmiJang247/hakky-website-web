@@ -53,6 +53,17 @@ const RightSlideMenu: React.FC<Props> = ({ sideNavOpen, setSideNavOpen }) => {
                 </Link>
               );
             }
+            if (m.leagueType === 'student' && !m.tournamentId) {
+              return (
+                <button
+                  className="w-full text-white p-5 border-solid border-b border-b-main-blue flex justify-center"
+                  key={m.id}
+                  onClick={() => alert('대회가 등록되지 않았습니다')}
+                >
+                  {m.name}
+                </button>
+              );
+            }
             if (m.leagueType === 'regular') {
               return (
                 <div key={m.id}>
