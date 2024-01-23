@@ -87,11 +87,11 @@ const useLogic = (): Logic => {
         if (a === null || b === null) {
           return a === null ? 1 : -1;
         }
-      
+
         // a와 b 모두 score.P 속성이 없으면 둘을 같은 것으로 처리
         const before = a.score && a.score.P !== undefined ? a.score.P : 0;
         const after = b.score && b.score.P !== undefined ? b.score.P : 0;
-      
+
         if (before > after) return 1; // before와 after를 반대로 비교
         if (before < after) return -1; // before와 after를 반대로 비교
         return 0;

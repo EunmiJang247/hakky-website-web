@@ -9,7 +9,6 @@ interface Props {
 }
 
 const DivisionGoalieRankTable: React.FC<Props> = ({ golies, teamName, currentYear }) => {
-
   return (
     <table className="w-full">
       <tbody className="bg-black">
