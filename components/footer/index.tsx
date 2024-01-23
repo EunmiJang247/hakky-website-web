@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="space20" />
             <div className="flex flex-col gap-2">
               <p className="font14400lightgray">대표자명: 임이삭</p>
-              <p className="font14400lightgray">주소: 기도 과천시 관문로 92, 101동 2020호(힐스테이트 과천중앙) </p>
+              <p className="font14400lightgray">주소: 경기도 과천시 관문로 92, 101동 2020호(힐스테이트 과천중앙) </p>
               <p className="font14400lightgray">이메일: hockeytvkorea@gmail.com</p>
             </div>
           </div>

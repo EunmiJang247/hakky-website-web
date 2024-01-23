@@ -40,25 +40,37 @@ const useLogic = (): Logic => {
         teamListByRank.sort((a: TeamScore, b: TeamScore) => b.score.PTS - a.score.PTS);
         setTeams(teamListByRank);
 
-        const strikerListByRank = divisionFromServer.playerScore;
+        let strikerListByRank = divisionFromServer.playerScore;
         strikerListByRank.sort(function compare(a: PlayerScore, b: PlayerScore) {
-          const before = a.score.P ?? 0;
-          const after = b.score.P ?? 0;
-          if (before > after) return -1;
-          if (before < after) return 1;
+          // a와 b 중 하나라도 null이면 뒤로 보내기
+          if (a === null || b === null) {
+            return a === null ? 1 : -1;
+          }
+        
+          // a와 b 모두 score.P 속성이 없으면 둘을 같은 것으로 처리
+          const before = a.score && a.score.P !== undefined ? a.score.P : 0;
+          const after = b.score && b.score.P !== undefined ? b.score.P : 0;
+        
+          if (before > after) return 1; // before와 after를 반대로 비교
+          if (before < after) return -1; // before와 after를 반대로 비교
           return 0;
         });
+        strikerListByRank = strikerListByRank.filter(item => item !== null);
         setStrikers(strikerListByRank);
 
-        const goalieListByRank = divisionFromServer.playerScore;
+        let goalieListByRank = divisionFromServer.playerScore;
         goalieListByRank.sort(function compare(a: PlayerScore, b: PlayerScore) {
-          const before = a.score.PTS ?? 0;
-          const after = b.score.PTS ?? 0;
+          if (a === null || b === null) {
+            return a === null ? 1 : -1;
+          }
+          const before = a.score && a.score.SVPercent !== undefined ? a.score.SVPercent : 0;
+          const after = b.score && b.score.SVPercent !== undefined ? b.score.SVPercent : 0;
           if (before > after) return -1;
           if (before < after) return 1;
           return 0;
         });
-        setGolies(strikerListByRank);
+        goalieListByRank = goalieListByRank.filter(item => item !== null);
+        setGolies(goalieListByRank);
       }
     } catch (error) {
       setErrorMessage('로딩하는 도중 에러가 발생했습니다');
