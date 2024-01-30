@@ -79,12 +79,12 @@ const MainPage = () => {
               <div className="w-full flex justify-center">
                 <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
                   <div className="w-[580px] md:w-full">
-                    <TagSmall title={`${logic.highlightDivision?.name} 공격수 순위표`} />
+                    <TagSmall title={`${logic.highlightDivision?.name} 포인트 순위`} />
                     <div className="space20" />
                     <DivisionStrikerRankTable strikers={logic.strikers} />
                   </div>
                   <div className="flex-1">
-                    <TagSmall title={`${logic.highlightDivision?.name} 골리 순위표`} />
+                    <TagSmall title={`${logic.highlightDivision?.name} 골리 포인트`} />
                     <div className="space20" />
                     <DivisionGoalieRankTable golies={logic.golies} />
                   </div>

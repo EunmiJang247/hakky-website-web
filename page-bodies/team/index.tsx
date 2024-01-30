@@ -75,7 +75,7 @@ const TeamDetail = () => {
               <div className="w-full max-w-[1420px] flex items-center gap-2 flex-col">
                 <SelectBox currentYear={logic.currentYear} setCurrentYear={logic.setCurrentYear} />
                 <div className="space20" />
-                <TagSmall title="공격수/수비수 순위표" />
+                <TagSmall title="포인트 순위" />
                 <div className="space20" />
                 <DivisionStrikerRankTable
                   strikers={logic.strikers}
