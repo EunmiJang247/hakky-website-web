@@ -9,7 +9,6 @@ interface Props {
 }
 
 const DivisionStrikerRankTable: React.FC<Props> = ({ strikers, teamName, currentYear }) => {
-  console.log(strikers);
   return (
     <table className="w-full">
       <tbody className="bg-black">
@@ -38,7 +37,10 @@ const DivisionStrikerRankTable: React.FC<Props> = ({ strikers, teamName, current
                     className="flex flex-col items-center justify-center gap-2 sm:gap-1"
                   >
                     <p>{p.playerName}</p>
-                    <img src={p.playerImage} />
+                    <div className='relative'>
+                      <img src={p.playerImage} className="w-14 h-14 relative" />
+                      <p className='absolute top-0 left-0 w-5 h-5 bg-black text-white border-solid border-white border text-xs'>{idx + 1}</p>
+                    </div>
                   </Link>
                 </td>
                 <td className="w-[20%] flex justify-center items-center">
@@ -64,7 +66,10 @@ const DivisionStrikerRankTable: React.FC<Props> = ({ strikers, teamName, current
                     className="flex flex-col items-center justify-center gap-2 sm:gap-1"
                   >
                     <p>{p.playerName}</p>
-                    <img src={p.playerImage} className="w-14 h-14" />
+                    <div className='relative'>
+                      <img src={p.playerImage} className="w-14 h-14 relative" />
+                      <p className='absolute top-0 left-0 w-5 h-5 bg-black text-white border-solid border-white border text-xs'>{idx + 1}</p>
+                    </div>
                   </Link>
                 </td>
                 <td className="w-[20%] flex justify-center items-center">
