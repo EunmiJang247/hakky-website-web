@@ -36,7 +36,7 @@ const useLogic = (): Logic => {
         setDivision(divisionFromServer);
         const fromServer = await readApi({ id: router.query.id });
         const { result } = fromServer;
-        console.log(fromServer, "저에요")
+        console.log(fromServer, '저에요');
         result.sort(function compare(a: Tournament, b: Tournament) {
           const before = a.tournamentDate ?? 0;
           const after = b.tournamentDate ?? 0;
