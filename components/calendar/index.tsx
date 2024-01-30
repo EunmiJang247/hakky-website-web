@@ -99,7 +99,7 @@ const Calendar: React.FC<Props> = ({ logic }) => {
                 {format(v, 'd')}
               </span>
 
-              <div className="mt-8 p-1 px-2 sm:mt-0 sm:flex gap-1">
+              <div className="mt-8 p-1 px-2 sm:mt-0 sm:flex gap-1 overflow-scroll scroll-no-show h-calendarHeight">
                 {logic.tournaments.map((t, idx) => {
                   const tournamentMonth = new Date(t.tournamentDate).getMonth();
                   const tournamentDate = new Date(t.tournamentDate).getDate();

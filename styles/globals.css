@@ -361,3 +361,7 @@ textarea {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+.scroll-no-show::-webkit-scrollbar {
+  display: none;
+}

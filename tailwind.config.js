@@ -28,6 +28,9 @@ module.exports = {
         'darker-gray': '#242424',
         'gray-9292': '#929292',
       },
+      height: {
+        calendarHeight: 'calc(100% - 40px)',
+      }
     },
   },
   plugins: [],
