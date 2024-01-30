@@ -30,6 +30,8 @@ type LoadedLogic = {
   onDivisionBtnClick: (value: number) => void;
   teams: TeamScore[] | undefined;
   strikers: PlayerScore[] | undefined;
+  strikersGoal: PlayerScore[] | undefined;
+  strikersAssist: PlayerScore[] | undefined;
   golies: PlayerScore[] | undefined;
 };
 
@@ -59,6 +61,8 @@ const useLogic = (): Logic => {
   const [highlightDivision, setHighlightDivision] = useState<Division | undefined>();
   const [teams, setTeams] = useState<TeamScore[]>();
   const [strikers, setStrikers] = useState<PlayerScore[]>();
+  const [strikersGoal, setStrikersGoal] = useState<PlayerScore[]>();
+  const [strikersAssist, setStrikersAssist] = useState<PlayerScore[]>();
   const [golies, setGolies] = useState<PlayerScore[]>();
 
   const init = async () => {
@@ -89,15 +93,52 @@ const useLogic = (): Logic => {
         }
 
         // a와 b 모두 score.P 속성이 없으면 둘을 같은 것으로 처리
-        const before = a.score && a.score.P !== undefined ? a.score.P : 0;
-        const after = b.score && b.score.P !== undefined ? b.score.P : 0;
+        const before = a.score && a.score.PTS !== undefined ? a.score.PTS : 0;
+        const after = b.score && b.score.PTS !== undefined ? b.score.PTS : 0;
 
-        if (before > after) return 1; // before와 after를 반대로 비교
-        if (before < after) return -1; // before와 after를 반대로 비교
+        if (before < after) return 1; // before와 after를 반대로 비교
+        if (before > after) return -1; // before와 after를 반대로 비교
         return 0;
       });
       strikerListByRank = strikerListByRank.filter(item => item !== null);
-      setStrikers(strikerListByRank);
+      const top10Strikers = strikerListByRank.slice(0, 10);
+      setStrikers(top10Strikers);
+
+      strikerListByRank.sort(function compare(a: PlayerScore, b: PlayerScore) {
+        // a와 b 중 하나라도 null이면 뒤로 보내기
+        if (a === null || b === null) {
+          return a === null ? 1 : -1;
+        }
+
+        // a와 b 모두 score.P 속성이 없으면 둘을 같은 것으로 처리
+        const before = a.score && a.score.G !== undefined ? a.score.G : 0;
+        const after = b.score && b.score.G !== undefined ? b.score.G : 0;
+
+        if (before < after) return 1; // before와 after를 반대로 비교
+        if (before > after) return -1; // before와 after를 반대로 비교
+        return 0;
+      });
+      strikerListByRank = strikerListByRank.filter(item => item !== null);
+      const top10StrikersGoal = strikerListByRank.slice(0, 10);
+      setStrikersGoal(top10StrikersGoal);
+
+      strikerListByRank.sort(function compare(a: PlayerScore, b: PlayerScore) {
+        // a와 b 중 하나라도 null이면 뒤로 보내기
+        if (a === null || b === null) {
+          return a === null ? 1 : -1;
+        }
+
+        // a와 b 모두 score.P 속성이 없으면 둘을 같은 것으로 처리
+        const before = a.score && a.score.A !== undefined ? a.score.A : 0;
+        const after = b.score && b.score.A !== undefined ? b.score.A : 0;
+
+        if (before < after) return 1; // before와 after를 반대로 비교
+        if (before > after) return -1; // before와 after를 반대로 비교
+        return 0;
+      });
+      strikerListByRank = strikerListByRank.filter(item => item !== null);
+      const top10StrikersAssist = strikerListByRank.slice(0, 10);
+      setStrikersAssist(top10StrikersAssist);
 
       let goalieListByRank = divisionFromServer.playerScore;
       goalieListByRank.sort(function compare(a: PlayerScore, b: PlayerScore) {
@@ -164,6 +205,8 @@ const useLogic = (): Logic => {
     onDivisionBtnClick,
     teams,
     strikers,
+    strikersGoal,
+    strikersAssist,
     golies,
   };
 };
