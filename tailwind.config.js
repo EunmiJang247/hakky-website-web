@@ -30,7 +30,7 @@ module.exports = {
       },
       height: {
         calendarHeight: 'calc(100% - 40px)',
-      }
+      },
     },
   },
   plugins: [],

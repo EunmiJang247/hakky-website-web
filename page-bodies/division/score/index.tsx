@@ -30,35 +30,35 @@ const DivisionScore = () => {
             <div className="space20" />
             <DivisionTeamRankTable teams={logic.teams} />
             <div className="space60 sm:space20" />
-              <div className="w-full flex justify-center">
-                <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
-                  <div className="w-[580px] md:w-full">
-                    <TagSmall title={`${logic.highlightDivision?.name} 포인트 순위`} />
-                    <div className="space20" />
-                    <DivisionStrikerRankTable strikers={logic.strikers} />
-                  </div>
-                  <div className="w-[580px] md:w-full">
-                    <TagSmall title={`${logic.highlightDivision?.name} 골 순위`} />
-                    <div className="space20" />
-                    <DivisionStrikerRankTable strikers={logic.strikersGoal} />
-                  </div>
-                  <div className="w-[580px] md:w-full">
-                    <TagSmall title={`${logic.highlightDivision?.name} 어시스트 순위`} />
-                    <div className="space20" />
-                    <DivisionStrikerRankTable strikers={logic.strikersAssist} />
-                  </div>
+            <div className="w-full flex justify-center">
+              <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
+                <div className="w-[580px] md:w-full">
+                  <TagSmall title={`${logic.highlightDivision?.name} 포인트 순위`} />
+                  <div className="space20" />
+                  <DivisionStrikerRankTable strikers={logic.strikers} />
+                </div>
+                <div className="w-[580px] md:w-full">
+                  <TagSmall title={`${logic.highlightDivision?.name} 골 순위`} />
+                  <div className="space20" />
+                  <DivisionStrikerRankTable strikers={logic.strikersGoal} />
+                </div>
+                <div className="w-[580px] md:w-full">
+                  <TagSmall title={`${logic.highlightDivision?.name} 어시스트 순위`} />
+                  <div className="space20" />
+                  <DivisionStrikerRankTable strikers={logic.strikersAssist} />
                 </div>
               </div>
-              <div className="space20" />
-              <div className="w-full flex justify-center">
-                <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
-                  <div className="flex-1">
-                      <TagSmall title={`${logic.highlightDivision?.name} 골리 포인트`} />
-                      <div className="space20" />
-                      <DivisionGoalieRankTable golies={logic.golies} />
-                    </div>
+            </div>
+            <div className="space20" />
+            <div className="w-full flex justify-center">
+              <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
+                <div className="flex-1">
+                  <TagSmall title={`${logic.highlightDivision?.name} 골리 포인트`} />
+                  <div className="space20" />
+                  <DivisionGoalieRankTable golies={logic.golies} />
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>

@@ -37,9 +37,11 @@ const DivisionStrikerRankTable: React.FC<Props> = ({ strikers, teamName, current
                     className="flex flex-col items-center justify-center gap-2 sm:gap-1"
                   >
                     <p>{p.playerName}</p>
-                    <div className='relative'>
+                    <div className="relative">
                       <img src={p.playerImage} className="w-14 h-14 relative" />
-                      <p className='absolute top-0 left-0 w-5 h-5 bg-black text-white border-solid border-white border text-xs'>{idx + 1}</p>
+                      <p className="absolute top-0 left-0 w-5 h-5 bg-black text-white border-solid border-white border text-xs">
+                        {idx + 1}
+                      </p>
                     </div>
                   </Link>
                 </td>
@@ -66,9 +68,11 @@ const DivisionStrikerRankTable: React.FC<Props> = ({ strikers, teamName, current
                     className="flex flex-col items-center justify-center gap-2 sm:gap-1"
                   >
                     <p>{p.playerName}</p>
-                    <div className='relative'>
+                    <div className="relative">
                       <img src={p.playerImage} className="w-14 h-14 relative" />
-                      <p className='absolute top-0 left-0 w-5 h-5 bg-black text-white border-solid border-white border text-xs'>{idx + 1}</p>
+                      <p className="absolute top-0 left-0 w-5 h-5 bg-black text-white border-solid border-white border text-xs">
+                        {idx + 1}
+                      </p>
                     </div>
                   </Link>
                 </td>

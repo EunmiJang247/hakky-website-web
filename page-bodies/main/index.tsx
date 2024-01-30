@@ -100,10 +100,10 @@ const MainPage = () => {
               <div className="w-full flex justify-center">
                 <div className="flex w-[1420px] gap-4 m:w-[940px] md:flex-col">
                   <div className="flex-1">
-                      <TagSmall title={`${logic.highlightDivision?.name} 골리 포인트`} />
-                      <div className="space20" />
-                      <DivisionGoalieRankTable golies={logic.golies} />
-                    </div>
+                    <TagSmall title={`${logic.highlightDivision?.name} 골리 포인트`} />
+                    <div className="space20" />
+                    <DivisionGoalieRankTable golies={logic.golies} />
+                  </div>
                 </div>
               </div>
             </>
