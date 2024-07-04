@@ -59,7 +59,7 @@ const useLogic = (): Logic => {
         init(parseInt(page, 10));
       }
     }
-  }, [router.isReady]);
+  }, [router]);
 
   return {
     status: 'LOADED',
