@@ -105,14 +105,14 @@ const useLogic = (): Logic => {
       return '';
     });
     finalPlayerResult.sort(function compare(a: PlayerScoreEach, b: PlayerScoreEach) {
-      const beforePTS = a.score.PTS ?? 0;
-      const afterPTS = b.score.PTS ?? 0;
+      const beforePTS = a.score?.PTS ?? 0;
+      const afterPTS = b.score?.PTS ?? 0;
       if (beforePTS > afterPTS) return -1;
       if (beforePTS < afterPTS) return 1;
 
       // PTS가 같으면 SVPercent로 정렬
-      const beforeSVPercent = a.score.SVPercent ?? 0;
-      const afterSVPercent = b.score.SVPercent ?? 0;
+      const beforeSVPercent = a.score?.SVPercent ?? 0;
+      const afterSVPercent = b.score?.SVPercent ?? 0;
       if (beforeSVPercent > afterSVPercent) return -1;
       if (beforeSVPercent < afterSVPercent) return 1;
 
