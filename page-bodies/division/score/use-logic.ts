@@ -41,7 +41,14 @@ const useLogic = (): Logic => {
         const divisionFromServer = await readDivisionApi({ id: router.query.id });
         setHighlightDivision(divisionFromServer);
         const teamListByRank = divisionFromServer.teamScore;
-        teamListByRank.sort((a: TeamScore, b: TeamScore) => b.score.PTS - a.score.PTS);
+        teamListByRank.sort((a: TeamScore, b: TeamScore) => {
+          // a와 b의 score.PTS가 없는 경우 처리
+          const aPts = a.score?.PTS ?? -Infinity; // score.PTS가 없으면 -Infinity로 설정
+          const bPts = b.score?.PTS ?? -Infinity; // score.PTS가 없으면 -Infinity로 설정
+          return bPts - aPts;
+      });
+
+        // teamListByRank.sort((a: TeamScore, b: TeamScore) => b.score.PTS - a.score.PTS);
         setTeams(teamListByRank);
 
         let strikerListByRank = divisionFromServer.playerScore;
