@@ -46,7 +46,7 @@ const useLogic = (): Logic => {
           const aPts = a.score?.PTS ?? -Infinity; // score.PTS가 없으면 -Infinity로 설정
           const bPts = b.score?.PTS ?? -Infinity; // score.PTS가 없으면 -Infinity로 설정
           return bPts - aPts;
-      });
+        });
 
         // teamListByRank.sort((a: TeamScore, b: TeamScore) => b.score.PTS - a.score.PTS);
         setTeams(teamListByRank);
