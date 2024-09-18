@@ -3,12 +3,12 @@ import { useContext, useEffect, useState } from 'react';
 import { startOfMonth, endOfMonth, startOfWeek, endOfWeek } from 'date-fns';
 import Tournament from '../../data-types/tournament';
 import useReadTournamentsCalendar from '../../services/tournament/calendar';
-import useReadYoutubes from '../../services/youtube/read-list';
 import { Youtube } from '../../data-types/youtube';
 import MenuContext from '../../contexts/menus';
 import Menu from '../../data-types/menu';
 import Division, { PlayerScore, TeamScore } from '../../data-types/division';
 import useReadDivision from '../../services/division/read';
+import useReadYoutubesMain from '../../services/youtube/main';
 
 type LoadingLogic = {
   status: 'LOADING';
@@ -46,7 +46,7 @@ const useLogic = (): Logic => {
   const router = useRouter();
   const readTournamentApi = useReadTournamentsCalendar();
   const readDivisionApi = useReadDivision();
-  const readYoutubes = useReadYoutubes();
+  const readYoutubesMain = useReadYoutubesMain();
   const [youtubeModalOpen, setYoutubeModalOpen] = useState<boolean>(false);
   const [tournaments, setTournaments] = useState<Tournament[]>([]);
   const [youtubes, setYoutubes] = useState<Youtube[]>();
@@ -69,7 +69,7 @@ const useLogic = (): Logic => {
     try {
       const tournamentsFromServer = await readTournamentApi({ startDate, endDate });
       setTournaments(tournamentsFromServer);
-      const youtubeFromServe = await readYoutubes({ limit: 6, skip: 0 });
+      const youtubeFromServe = await readYoutubesMain({ limit: 6, skip: 0 });
       setYoutubes(youtubeFromServe.result);
     } catch (error) {
       setErrorMessage('로딩하는 도중 에러가 발생했습니다');

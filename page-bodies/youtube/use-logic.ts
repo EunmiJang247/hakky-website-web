@@ -34,7 +34,7 @@ const useLogic = (): Logic => {
 
   const init = async (page: number) => {
     try {
-      const fromServer = await readApi({ limit: 10, skip: page * 10 });
+      const fromServer = await readApi({ limit: 12, skip: page * 12 });
       setData(fromServer.result);
       setCount(fromServer.count);
     } catch (error) {
